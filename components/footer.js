@@ -55,7 +55,7 @@ export class SiteFooter extends HTMLElement {
             </ul>
           </div>
 
-          <!-- Bloco 4: Ajuda & Info (Lado a Lado no Mobile) -->
+          <!-- Bloco 4: Ajuda (Lado a Lado no Mobile) -->
           <div class="footer-col">
             <h4 class="footer-col-title">Ajuda</h4>
             <ul class="footer-links">
@@ -91,22 +91,26 @@ export class SiteFooter extends HTMLElement {
               </div>
             </div>
           </div>
+
+          <!-- Bloco 6: Institucional (Novo Menu Solicitado) -->
+          <div class="footer-col">
+            <h4 class="footer-col-title">Institucional</h4>
+            <ul class="footer-links">
+              <li class="footer-link-item"><a href="/institucional.html#entregas">Prazos & Envios</a></li>
+              <li class="footer-link-item"><a href="/institucional.html#trocas">Trocas & Garantia</a></li>
+              <li class="footer-link-item"><a href="/institucional.html#privacidade">Privacidade & Cookies</a></li>
+              <li class="footer-link-item"><a href="/institucional.html#termos">Termos de Serviço</a></li>
+              <li class="footer-link-item"><a href="/institucional.html#confiabilidade">A VM é Confiável?</a></li>
+              <li class="footer-link-item"><a href="/institucional.html#aviso-legal">Aviso Legal</a></li>
+            </ul>
+          </div>
         </div>
 
-        <!-- Barra Inferior de Direitos & Links -->
+        <!-- Barra Inferior Limpa de Direitos (Sem links duplicados) -->
         <div class="footer-bottom">
-          <p class="footer-copyright">
+          <p class="footer-copyright" style="text-align: center; width: 100%; margin: 0 auto;">
             &copy; ${year} VM Gráfica Rápida & Papelaria Personalizada. Goiânia - GO. Todos os direitos reservados.
           </p>
-          <nav class="footer-legal-nav" aria-label="Links Complementares">
-            <a href="/" class="footer-legal-link">Página Inicial</a>
-            <span class="footer-legal-sep" aria-hidden="true">&bull;</span>
-            <a href="/produto-caneca.html" class="footer-legal-link">Caneca 325ml</a>
-            <span class="footer-legal-sep" aria-hidden="true">&bull;</span>
-            <a href="/#acabamentos" class="footer-legal-link">Acabamentos Nobres</a>
-            <span class="footer-legal-sep" aria-hidden="true">&bull;</span>
-            <a href="/#faq" class="footer-legal-link">Dúvidas Frequentes</a>
-          </nav>
         </div>
       </footer>
     `;

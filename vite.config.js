@@ -6,7 +6,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        caneca: resolve(__dirname, 'produto-caneca.html')
+        caneca: resolve(__dirname, 'produto-caneca.html'),
+        institucional: resolve(__dirname, 'institucional.html')
       }
     }
   }

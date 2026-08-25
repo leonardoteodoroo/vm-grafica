@@ -2836,3 +2836,212 @@ button, input, select {
 .hero-whatsapp-cta.is-docked {
   transform: translate3d(0, 0, 0);
 }
+
+
+/* ==========================================================================
+   FOOTER GRID COM 6 COLUNAS & INSTITUCIONAL
+   ========================================================================== */
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr repeat(4, 1fr) 1.1fr;
+  gap: 24px;
+  padding-bottom: 40px;
+}
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .footer-brand-col {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .footer-brand-col, .footer-contact-col {
+    grid-column: span 3;
+  }
+}
+
+/* ==========================================================================
+   PÁGINA INSTITUCIONAL & POLÍTICAS
+   ========================================================================== */
+
+.institutional-stage {
+  padding: 40px 4vw 80px;
+  background: var(--bg-canvas-subtle);
+}
+
+.institutional-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.institutional-sidebar {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  position: sticky;
+  top: 30px;
+}
+
+.sidebar-heading {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
+}
+
+.sidebar-nav-item:hover, .sidebar-nav-item.is-active {
+  background: #F0F9FF;
+  color: var(--brand-cyan);
+}
+
+.institutional-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.policy-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  scroll-margin-top: 40px;
+}
+
+.policy-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--brand-magenta);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.policy-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+  line-height: 1.25;
+}
+
+.policy-body {
+  font-size: 0.90rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.policy-body h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 10px;
+}
+
+.policy-body ul {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.policy-body strong {
+  color: var(--text-primary);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.trust-item {
+  background: var(--bg-canvas-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.trust-icon {
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.trust-item strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.trust-item p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .institutional-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .institutional-sidebar {
+    position: relative;
+    top: auto;
+  }
+
+  .sidebar-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+}
