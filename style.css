@@ -1341,62 +1341,306 @@ button, input, select {
 }
 
 
-
 /* ==========================================================================
-   SEÇÃO DE PRODUTO DEDICADA: CANECA PERSONALIZADA (produto-caneca.html)
+   DESIGN SYSTEM & SEMANTIC TOKENS - VM GRÁFICA (TEMA CLARO / LIGHT THEME)
    ========================================================================== */
 
-.breadcrumb-container {
+:root {
+  /* 1. Cores de Marca */
+  --brand-cyan: #0084D1;
+  --brand-cyan-light: #E0F2FE;
+  --brand-cyan-rgb: 0, 132, 209;
+  --brand-magenta: #E60067;
+  --brand-magenta-light: #FCE7F3;
+  --brand-magenta-rgb: 230, 0, 103;
+  --brand-yellow: #D97706;
+  --brand-yellow-light: #FEF3C7;
+  --brand-green: #16A34A;
+  --brand-green-hover: #15803D;
+  --brand-navy: #0B132B;
+  --brand-navy-subtle: #1E293B;
+
+  /* 2. Superfícies & Fundos */
+  --bg-canvas: #FFFFFF;
+  --bg-canvas-subtle: #F8FAFC;
+  --bg-canvas-alt: #F1F5F9;
+  --bg-surface-1: #FFFFFF;
+  --bg-surface-2: #F8FAFC;
+  --bg-surface-3: #F1F5F9;
+  --bg-surface-glass: rgba(255, 255, 255, 0.94);
+  --bg-topbar: #0B132B;
+  --bg-navbar: rgba(255, 255, 255, 0.96);
+
+  /* 3. Gradient Mesh & Transições Contínuas */
+  --mesh-hero: radial-gradient(circle at 10% 8%, rgba(0, 132, 209, 0.05) 0%, transparent 40%),
+               radial-gradient(circle at 90% 25%, rgba(230, 0, 103, 0.04) 0%, transparent 45%),
+               radial-gradient(circle at 50% 80%, rgba(217, 119, 6, 0.02) 0%, transparent 50%),
+               var(--bg-canvas);
+  
+  --mesh-flow-cyan: radial-gradient(circle at 10% 20%, rgba(0, 132, 209, 0.04) 0%, transparent 45%),
+                    radial-gradient(circle at 90% 80%, rgba(0, 132, 209, 0.02) 0%, transparent 45%);
+
+  --mesh-flow-magenta: radial-gradient(circle at 90% 15%, rgba(230, 0, 103, 0.04) 0%, transparent 45%),
+                       radial-gradient(circle at 10% 85%, rgba(230, 0, 103, 0.02) 0%, transparent 45%);
+
+  /* 4. Bordas & Contornos */
+  --border-subtle: #E2E8F0;
+  --border-card: rgba(226, 232, 240, 0.9);
+  --border-card-hover: #0084D1;
+  --border-focus: #0084D1;
+
+  /* 5. Tipografia (WCAG AAA em Fundo Claro) */
+  --text-primary: #0B132B;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-accent-cyan: #0070BA;
+  --text-accent-magenta: #C2185B;
+  --text-accent-yellow: #B45309;
+  --text-inverse: #FFFFFF;
+
+  /* 6. Acentos & Cores Gráficas */
+  --accent-cyan: #0084D1;
+  --accent-magenta: #E60067;
+  --accent-yellow: #D97706;
+  --accent-whatsapp: #16A34A;
+  --accent-whatsapp-hover: #15803D;
+
+  /* 7. Efeitos Visuais, Gradientes & Sombras */
+  --gradient-brand-vm: linear-gradient(135deg, #0084D1 0%, #E60067 100%);
+  --shadow-card: 0 4px 20px -2px rgba(11, 19, 43, 0.05), 0 2px 4px -1px rgba(11, 19, 43, 0.02);
+  --shadow-card-hover: 0 12px 30px -5px rgba(0, 132, 209, 0.14);
+  --shadow-float-btn: 0 8px 24px rgba(22, 163, 74, 0.35);
+  --blur-glass: blur(12px);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Fontes & Transições */
+  --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   RESET & REGRAS GLOBAIS
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-family);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--mesh-hero);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select {
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+.section-full {
+  width: 100%;
+  padding: 60px 4vw;
+  position: relative;
+}
+
+/* ==========================================================================
+   TOPBAR & NAVBAR
+   ========================================================================== */
+
+.topbar {
+  width: 100%;
+  background: var(--bg-topbar);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 7px 4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: #94A3B8;
+  position: relative;
+}
+
+.topbar-highlight {
+  color: #FBBF24;
+  font-weight: 700;
+}
+
+.navbar {
+  width: 100%;
+  padding: 12px 4vw;
+  background: var(--bg-navbar);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: var(--blur-glass);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid var(--border-subtle);
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  background: var(--gradient-brand-vm);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  font-size: 0.70rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.nav-link:hover {
+  color: var(--brand-cyan);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-whatsapp {
+  background: var(--brand-green);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+}
+
+.btn-whatsapp:hover {
+  background: var(--brand-green-hover);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   BREADCRUMB BAR
+   ========================================================================== */
+
+.breadcrumb-bar {
   background: var(--bg-canvas-subtle);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 10px 0;
+  padding: 12px 4vw;
   font-size: 0.82rem;
 }
 
-.breadcrumb-list {
+.breadcrumb-inner {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   gap: 8px;
-  list-style: none;
   color: var(--text-muted);
   flex-wrap: wrap;
 }
 
-.breadcrumb-item a {
+.breadcrumb-inner a {
   color: var(--text-secondary);
 }
 
-.breadcrumb-item a:hover {
+.breadcrumb-inner a:hover {
   color: var(--brand-cyan);
 }
 
-.breadcrumb-item.active {
+.bc-sep {
+  opacity: 0.4;
+}
+
+.bc-current {
   color: var(--brand-navy);
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.product-main-section {
-  padding: 36px 0 60px;
-  background: 
-    radial-gradient(circle at 15% 10%, rgba(0, 132, 209, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 85% 30%, rgba(230, 0, 103, 0.05) 0%, transparent 45%),
-    var(--bg-canvas);
+/* ==========================================================================
+   PRODUCT STAGE (CANECA PERSONALIZADA) - RESPIRÁVEL & LADO A LADO
+   ========================================================================== */
+
+.product-stage {
+  padding: 40px 4vw 60px;
 }
 
-.product-grid-layout {
+.product-stage-inner {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 52px;
   align-items: start;
 }
 
-.product-gallery-col {
+/* Galeria */
+.product-gallery-block {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.product-main-image-wrapper {
+.product-hero-image-box {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -1410,39 +1654,36 @@ button, input, select {
   justify-content: center;
 }
 
-.product-main-img {
+.product-stage-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.25s ease, transform 0.3s ease;
+  transition: opacity 0.2s ease, transform 0.3s ease;
 }
 
-.product-main-image-wrapper:hover .product-main-img {
-  transform: scale(1.02);
-}
-
-.product-badge-float {
+.photo-badge {
   position: absolute;
   top: 14px;
   left: 14px;
   background: rgba(11, 19, 43, 0.88);
   backdrop-filter: var(--blur-glass);
   color: #FFFFFF;
-  font-size: 0.76rem;
-  font-weight: 700;
-  padding: 6px 14px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
   z-index: 2;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.product-thumbnails-grid {
+/* Miniaturas Lado a Lado (5 Colunas) */
+.product-thumbs-strip {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 }
 
-.thumb-btn {
+.thumb-card {
   background: #FFFFFF;
   border: 2px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -1455,78 +1696,82 @@ button, input, select {
   transition: var(--transition-fast);
 }
 
-.thumb-btn img {
+.thumb-card img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: calc(var(--radius-md) - 4px);
 }
 
-.thumb-label {
-  font-size: 0.70rem;
+.thumb-text {
+  font-size: 0.68rem;
   font-weight: 700;
   color: var(--text-secondary);
 }
 
-.thumb-btn:hover {
+.thumb-card:hover {
   border-color: var(--brand-cyan);
   transform: translateY(-2px);
 }
 
-.thumb-btn.is-active {
+.thumb-card.is-active {
   border-color: var(--brand-cyan);
   box-shadow: 0 0 0 2px rgba(0, 132, 209, 0.25);
 }
 
-.product-trust-strip {
+/* 3 Badges de Garantia Lado a Lado */
+.product-guarantees-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 6px;
+  gap: 10px;
+  margin-top: 4px;
 }
 
-.trust-item {
+.guarantee-box {
   background: #FFFFFF;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 12px;
+  padding: 12px 8px;
+  text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-.trust-icon {
+.guarantee-icon {
   font-size: 1.3rem;
 }
 
-.trust-item strong {
+.guarantee-body strong {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--text-primary);
 }
 
-.trust-item p {
-  font-size: 0.68rem;
+.guarantee-body p {
+  font-size: 0.66rem;
   color: var(--text-muted);
   line-height: 1.2;
 }
 
-.product-info-col {
+/* Coluna de Informações e Configurador */
+.product-details-block {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 22px;
 }
 
-.product-category-tag {
+.product-pill {
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   color: var(--brand-magenta);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
-.product-title {
+.product-main-heading {
   font-size: 1.85rem;
   font-weight: 900;
   color: var(--text-primary);
@@ -1534,63 +1779,80 @@ button, input, select {
   letter-spacing: -0.02em;
 }
 
-.product-rating-row {
+.rating-badge-line {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 0.84rem;
+  margin-top: 6px;
 }
 
-.star-rating {
+.stars {
   color: #F59E0B;
   font-weight: 900;
   letter-spacing: 2px;
 }
 
-.rating-score {
+.score {
   font-weight: 800;
   color: var(--text-primary);
 }
 
-.rating-count {
+.reviews-count {
   color: var(--text-muted);
 }
 
-.product-lead {
+.product-description-text {
   font-size: 0.92rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.55;
+  margin-top: 6px;
 }
 
-.product-configurator-card {
+/* Card do Configurador com Respiro */
+.configurator-panel {
   background: #FFFFFF;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
-  padding: 22px;
+  padding: 24px;
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.config-step-group {
+.config-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
-.config-group-label {
+.config-label-title {
   font-size: 0.88rem;
+  font-weight: 800;
   color: var(--text-primary);
 }
 
-.model-chips-grid {
+.config-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.volume-save-tag {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--brand-magenta);
+}
+
+/* Model Options em 2 Colunas Lado a Lado */
+.model-options-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 
-.model-chip {
+.model-option {
   background: var(--bg-canvas-subtle);
   border: 1.5px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -1603,55 +1865,44 @@ button, input, select {
   transition: var(--transition-fast);
 }
 
-.model-chip:hover {
+.model-option:hover {
   border-color: var(--brand-cyan);
   background: #FFFFFF;
 }
 
-.model-chip.is-selected {
+.model-option.is-selected {
   border-color: var(--brand-cyan);
   background: #F0F9FF;
   box-shadow: 0 0 0 2px rgba(0, 132, 209, 0.20);
 }
 
-.chip-title {
+.opt-name {
   font-size: 0.86rem;
   font-weight: 800;
   color: var(--text-primary);
 }
 
-.chip-sub {
+.opt-desc {
   font-size: 0.70rem;
   color: var(--text-muted);
 }
 
-.chip-price {
+.opt-price {
   font-size: 0.74rem;
   font-weight: 700;
   color: var(--brand-cyan);
   margin-top: 3px;
 }
 
-.qty-label-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.qty-volume-hint {
-  font-size: 0.74rem;
-  font-weight: 700;
-  color: var(--brand-magenta);
-}
-
-.qty-control-wrapper {
+/* Controles de Quantidade Lado a Lado */
+.quantity-controls-row {
   display: flex;
   align-items: center;
   gap: 14px;
   flex-wrap: wrap;
 }
 
-.stepper-box {
+.stepper-widget {
   display: inline-flex;
   align-items: center;
   border: 1.5px solid var(--border-subtle);
@@ -1660,7 +1911,7 @@ button, input, select {
   overflow: hidden;
 }
 
-.stepper-btn {
+.stepper-action {
   background: var(--bg-canvas-alt);
   color: var(--text-primary);
   width: 38px;
@@ -1674,11 +1925,11 @@ button, input, select {
   transition: var(--transition-fast);
 }
 
-.stepper-btn:hover {
+.stepper-action:hover {
   background: #E2E8F0;
 }
 
-.stepper-input {
+.stepper-val {
   width: 50px;
   height: 38px;
   text-align: center;
@@ -1688,12 +1939,12 @@ button, input, select {
   border: none;
 }
 
-.tier-quick-buttons {
+.quick-qty-buttons {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
-.tier-btn {
+.quick-qty-btn {
   background: var(--bg-canvas-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
@@ -1705,24 +1956,25 @@ button, input, select {
   transition: var(--transition-fast);
 }
 
-.tier-btn:hover, .tier-btn.is-active {
+.quick-qty-btn:hover, .quick-qty-btn.is-active {
   background: var(--brand-navy);
   color: #FFFFFF;
   border-color: var(--brand-navy);
 }
 
-.volume-tiers-strip {
+/* 4 Faixas de Desconto Lado a Lado */
+.volume-tiers-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   margin-top: 4px;
 }
 
-.tier-col {
+.tier-card {
   background: var(--bg-canvas-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 8px 6px;
+  padding: 8px 4px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1730,34 +1982,35 @@ button, input, select {
   transition: var(--transition-fast);
 }
 
-.tier-col.is-current {
+.tier-card.is-current {
   border-color: var(--brand-cyan);
   background: #F0F9FF;
   box-shadow: 0 2px 8px rgba(0, 132, 209, 0.12);
 }
 
-.tier-range {
+.tier-qty {
   font-size: 0.68rem;
   color: var(--text-muted);
 }
 
-.tier-val {
+.tier-cost {
   font-size: 0.76rem;
   font-weight: 800;
   color: var(--text-primary);
 }
 
-.tier-badge {
+.tier-disc {
   font-size: 0.64rem;
   font-weight: 700;
   color: var(--brand-green);
 }
 
-.tier-badge.highlight {
+.tier-disc.atacado {
   color: var(--brand-magenta);
 }
 
-.price-summary-box {
+/* Card de Preço & Resumo */
+.price-quote-card {
   background: var(--bg-canvas-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -1767,48 +2020,48 @@ button, input, select {
   gap: 8px;
 }
 
-.price-summary-row {
+.price-line {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
 }
 
-.summary-label {
+.price-lbl {
   color: var(--text-muted);
 }
 
-.summary-unit-val {
+.price-val {
   font-weight: 700;
   color: var(--text-secondary);
 }
 
-.price-summary-row.total-highlight {
+.price-line.highlight-total {
   border-top: 1px dashed var(--border-subtle);
   padding-top: 10px;
   margin-top: 4px;
 }
 
-.summary-label-total {
-  font-size: 0.96rem;
+.total-lbl {
+  font-size: 0.95rem;
   font-weight: 800;
   color: var(--text-primary);
   display: block;
 }
 
-.summary-subtext {
+.total-sub {
   font-size: 0.72rem;
   color: var(--text-muted);
   display: block;
 }
 
-.total-price-val {
+.total-num {
   font-size: 1.45rem;
   font-weight: 900;
   color: var(--brand-green);
 }
 
-.deadline-note {
+.eta-line {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -1817,13 +2070,14 @@ button, input, select {
   margin-top: 4px;
 }
 
-.product-cta-actions {
+/* Ações de Compra */
+.action-buttons-stack {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.btn-whatsapp-primary {
+.btn-whatsapp-order {
   background: var(--brand-green);
   color: #FFFFFF;
   padding: 14px 22px;
@@ -1837,13 +2091,13 @@ button, input, select {
   font-weight: 800;
 }
 
-.btn-whatsapp-primary:hover {
+.btn-whatsapp-order:hover {
   background: var(--brand-green-hover);
   transform: translateY(-2px);
   box-shadow: 0 10px 28px rgba(22, 163, 74, 0.45);
 }
 
-.btn-secondary-art {
+.btn-consult-art {
   background: #FFFFFF;
   color: var(--text-secondary);
   border: 1px solid var(--border-subtle);
@@ -1854,12 +2108,12 @@ button, input, select {
   font-weight: 700;
 }
 
-.btn-secondary-art:hover {
+.btn-consult-art:hover {
   border-color: var(--brand-cyan);
   color: var(--brand-cyan);
 }
 
-.delivery-info-badge {
+.pickup-callout {
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -1871,26 +2125,38 @@ button, input, select {
   border-left: 3px solid var(--brand-cyan);
 }
 
-.section-specs-clean {
-  padding: 50px 0;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(0, 132, 209, 0.05) 0%, transparent 45%),
-    var(--bg-canvas-subtle);
+/* ==========================================================================
+   ESPECIFICAÇÕES TÉCNICAS (3 COLUNAS LADO A LADO)
+   ========================================================================== */
+
+.specs-zone {
+  background: var(--bg-canvas-subtle);
+  padding: 60px 4vw;
 }
 
 .section-header-center {
   text-align: center;
   max-width: 680px;
-  margin: 0 auto 32px;
+  margin: 0 auto 36px;
 }
 
-.specs-grid-three {
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.specs-trio-row {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-.spec-card-clean {
+.spec-tile {
   background: #FFFFFF;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
@@ -1899,25 +2165,25 @@ button, input, select {
   transition: var(--transition-smooth);
 }
 
-.spec-card-clean:hover {
+.spec-tile:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-card-hover);
   border-color: var(--brand-cyan);
 }
 
-.spec-icon-box {
+.tile-icon {
   font-size: 1.8rem;
   margin-bottom: 12px;
 }
 
-.spec-card-title {
+.tile-heading {
   font-size: 1.05rem;
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 12px;
 }
 
-.spec-list {
+.tile-list {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -1926,24 +2192,28 @@ button, input, select {
   color: var(--text-secondary);
 }
 
-.spec-list li strong {
+.tile-list li strong {
   color: var(--text-primary);
 }
 
-.section-steps-flow {
-  padding: 50px 0;
-  background: 
-    radial-gradient(circle at 90% 80%, rgba(230, 0, 103, 0.04) 0%, transparent 45%),
-    var(--bg-canvas);
+/* ==========================================================================
+   PASSOS DO PEDIDO (3 PASSOS LADO A LADO)
+   ========================================================================== */
+
+.steps-zone {
+  padding: 60px 4vw;
+  background: var(--bg-canvas);
 }
 
-.steps-flow-grid {
+.steps-trio-row {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-.step-flow-item {
+.step-tile {
   background: #FFFFFF;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
@@ -1956,7 +2226,7 @@ button, input, select {
   gap: 10px;
 }
 
-.step-number-circle {
+.step-badge-num {
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -1970,25 +2240,30 @@ button, input, select {
   box-shadow: 0 4px 14px rgba(0, 132, 209, 0.30);
 }
 
-.step-flow-title {
+.step-heading {
   font-size: 1rem;
   font-weight: 800;
   color: var(--text-primary);
 }
 
-.step-flow-desc {
+.step-desc {
   font-size: 0.82rem;
   color: var(--text-secondary);
   line-height: 1.4;
 }
 
-.section-faq-clean {
-  padding: 50px 0 70px;
+/* ==========================================================================
+   FAQ ACCORDION
+   ========================================================================== */
+
+.faq-zone {
+  padding: 60px 4vw 80px;
   background: var(--bg-canvas-subtle);
 }
 
-.faq-container-narrow {
+.faq-inner-wrap {
   max-width: 800px;
+  margin: 0 auto;
 }
 
 .faq-accordion-list {
@@ -2020,7 +2295,6 @@ button, input, select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  user-select: none;
 }
 
 .faq-accordion-header::-webkit-details-marker {
@@ -2045,6 +2319,10 @@ button, input, select {
   border-top: 1px solid var(--border-subtle);
   padding-top: 12px;
 }
+
+/* ==========================================================================
+   STICKY MOBILE BUY BAR
+   ========================================================================== */
 
 .sticky-mobile-buy-bar {
   display: none;
@@ -2092,49 +2370,327 @@ button, input, select {
   align-items: center;
 }
 
+/* ==========================================================================
+   FOOTER MASTER (LADO A LADO NO MOBILE)
+   ========================================================================== */
+
+.footer-master {
+  background: #0B132B;
+  color: #E2E8F0;
+  padding: 48px 4vw 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 36px;
+  padding-bottom: 40px;
+}
+
+.footer-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.footer-brand-logo {
+  border-radius: var(--radius-sm);
+}
+
+.footer-brand-name {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  display: block;
+}
+
+.footer-brand-sub {
+  font-size: 0.70rem;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.footer-brand-desc {
+  font-size: 0.82rem;
+  color: #94A3B8;
+  line-height: 1.5;
+}
+
+.footer-col-title {
+  font-size: 0.90rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-link-item a {
+  color: #94A3B8;
+  font-size: 0.84rem;
+}
+
+.footer-link-item a:hover {
+  color: var(--brand-cyan);
+}
+
+.footer-contact-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #CBD5E1;
+  line-height: 1.4;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 0;
+  font-size: 0.76rem;
+  color: #64748B;
+}
+
+.footer-bottom-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-legal-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-legal-link {
+  color: #94A3B8;
+}
+
+.footer-legal-link:hover {
+  color: #FFFFFF;
+}
+
+.footer-legal-sep {
+  opacity: 0.4;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE: MOBILE LADO A LADO & RESPIROS
+   ========================================================================== */
+
 @media (max-width: 900px) {
-  .product-grid-layout {
+  .product-stage-inner {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 32px;
   }
 
-  .specs-grid-three, .steps-flow-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
+  .nav-links {
+    display: none;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-brand-col, .footer-contact-col {
+    grid-column: span 3;
   }
 }
 
 @media (max-width: 640px) {
-  .product-main-section {
-    padding: 20px 0 75px;
+  .topbar {
+    padding: 6px 14px;
+    font-size: 0.70rem;
+    flex-direction: column;
+    gap: 2px;
+    text-align: center;
   }
 
-  .product-title {
+  .navbar {
+    padding: 8px 14px;
+  }
+
+  .brand-logo-img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.64rem;
+  }
+
+  .nav-cta-btn {
+    padding: 6px 12px;
+    font-size: 0.76rem;
+  }
+
+  .product-stage {
+    padding: 20px 14px 75px;
+  }
+
+  .product-main-heading {
     font-size: 1.40rem;
   }
 
-  .product-thumbnails-grid {
+  .product-hero-image-box {
+    max-height: 340px;
+  }
+
+  .product-thumbs-strip {
     gap: 6px;
   }
 
-  .thumb-label {
+  .thumb-text {
     display: none;
   }
 
-  .product-trust-strip {
-    grid-template-columns: 1fr;
+  /* 3 Badges de Garantia Lado a Lado no Mobile */
+  .product-guarantees-row {
+    grid-template-columns: repeat(3, 1fr);
     gap: 6px;
   }
 
-  .model-chips-grid {
-    grid-template-columns: 1fr;
+  .guarantee-box {
+    padding: 8px 4px;
   }
 
-  .volume-tiers-strip {
+  .guarantee-icon {
+    font-size: 1.1rem;
+  }
+
+  .guarantee-body strong {
+    font-size: 0.68rem;
+  }
+
+  .guarantee-body p {
+    display: none;
+  }
+
+  /* Model Chips em 2 Colunas Lado a Lado no Mobile */
+  .model-options-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .model-option {
+    padding: 10px 8px;
+  }
+
+  .opt-name {
+    font-size: 0.78rem;
+  }
+
+  .opt-desc {
+    font-size: 0.64rem;
+  }
+
+  .opt-price {
+    font-size: 0.70rem;
+  }
+
+  /* Tabela de 4 Faixas de Volume Lado a Lado no Mobile */
+  .volume-tiers-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+
+  .tier-card {
+    padding: 6px 2px;
+  }
+
+  .tier-qty {
+    font-size: 0.62rem;
+  }
+
+  .tier-cost {
+    font-size: 0.70rem;
+  }
+
+  .tier-disc {
+    font-size: 0.58rem;
+  }
+
+  .quick-qty-btn {
+    padding: 6px 8px;
+    font-size: 0.72rem;
+  }
+
+  /* Especificações e Passos 3 Lado a Lado no Mobile */
+  .specs-trio-row, .steps-trio-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .spec-tile, .step-tile {
+    padding: 14px 8px;
+  }
+
+  .tile-icon {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+  }
+
+  .tile-heading, .step-heading {
+    font-size: 0.78rem;
+    margin-bottom: 6px;
+  }
+
+  .tile-list {
+    font-size: 0.68rem;
+    gap: 4px;
+  }
+
+  .step-badge-num {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .step-desc {
+    font-size: 0.68rem;
   }
 
   .sticky-mobile-buy-bar {
     display: block;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .footer-col-title {
+    font-size: 0.78rem;
+  }
+
+  .footer-link-item a {
+    font-size: 0.72rem;
   }
 }
