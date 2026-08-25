@@ -337,6 +337,7 @@ button, input, select {
 .hero-cta-slot {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 }
 
 .hero-cta-slot.is-reserved {
@@ -358,6 +359,7 @@ button, input, select {
   left: 50%;
   width: 0;
   height: 0;
+  fill: #FFFFFF;
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.72);
   pointer-events: none;
@@ -372,15 +374,15 @@ button, input, select {
   position: fixed;
   right: calc(2rem + env(safe-area-inset-right));
   bottom: calc(2rem + env(safe-area-inset-bottom));
-  width: var(--morph-width, 64px);
-  height: var(--morph-height, 64px);
+  width: var(--morph-width, 60px);
+  height: var(--morph-height, 60px);
   padding: 0;
   gap: 0;
   overflow: hidden;
   border-radius: 9999px;
   z-index: 9000;
   background-color: var(--accent-whatsapp);
-  box-shadow: 0 10px 30px rgba(22, 163, 74, 0.45);
+  box-shadow: 0 10px 28px rgba(22, 163, 74, 0.45);
   transform: translate3d(var(--morph-x, 0px), var(--morph-y, 0px), 0);
   will-change: transform, width, height;
   transition: background-color 0.25s ease, box-shadow 0.25s ease;
@@ -400,15 +402,16 @@ button, input, select {
 }
 
 .hero-whatsapp-cta.is-morphing .hero-whatsapp-icon {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
+  fill: #FFFFFF;
   opacity: var(--morph-icon-opacity, 1);
   transform: translate(-50%, -50%) scale(var(--morph-icon-scale, 1));
 }
 
 /* Estado Final Aportado no Canto (Docked) */
 .hero-whatsapp-cta.is-docked {
-  box-shadow: 0 12px 35px rgba(22, 163, 74, 0.55);
+  box-shadow: 0 12px 30px rgba(22, 163, 74, 0.52);
 }
 
 @media (hover: hover) and (min-width: 769px) {
@@ -416,14 +419,57 @@ button, input, select {
     background-color: var(--accent-whatsapp-hover);
     transform: translate3d(
       var(--morph-x, 0px),
-      calc(var(--morph-y, 0px) - 4px),
+      calc(var(--morph-y, 0px) - 3px),
       0
     );
-    box-shadow: 0 16px 40px rgba(22, 163, 74, 0.65);
+    box-shadow: 0 16px 36px rgba(22, 163, 74, 0.65);
   }
 
   .hero-whatsapp-cta.is-docked:hover .hero-whatsapp-icon {
-    transform: translate(-50%, -50%) scale(var(--morph-icon-scale, 1)) scale(1.1);
+    transform: translate(-50%, -50%) scale(var(--morph-icon-scale, 1)) scale(1.08);
+  }
+}
+
+.hero-whatsapp-cta:focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 8px rgba(22, 163, 74, 0.72),
+              0 14px 34px rgba(22, 163, 74, 0.55);
+}
+
+@media (max-width: 768px) {
+  .hero-whatsapp-cta.is-morphing {
+    right: calc(1.25rem + env(safe-area-inset-right));
+    bottom: calc(1.25rem + env(safe-area-inset-bottom));
+    width: var(--morph-width, 64px);
+    height: var(--morph-height, 64px);
+  }
+
+  .hero-whatsapp-cta.is-morphing .hero-whatsapp-icon {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 350px) {
+  .hero-whatsapp-cta:not(.is-morphing) {
+    max-width: calc(100vw - 3rem);
+    padding-inline: 1.1rem;
+  }
+
+  .hero-whatsapp-cta:not(.is-morphing) .hero-whatsapp-text {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-whatsapp-cta.is-morphing,
+  .hero-whatsapp-cta.is-docked,
+  .hero-whatsapp-cta.is-morphing .hero-whatsapp-icon,
+  .hero-whatsapp-cta.is-docked .hero-whatsapp-icon {
+    transition: none;
   }
 }
 
