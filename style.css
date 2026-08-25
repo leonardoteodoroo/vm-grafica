@@ -2047,10 +2047,16 @@ button, input, select {
   }
 
   .footer-bottom {
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-align: center;
-    gap: 10px;
-    padding-top: 14px;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding-top: 18px;
+  }
+
+  .footer-dev-credit {
+    margin-bottom: 2px;
   }
 
   .footer-copyright {
@@ -3266,41 +3272,6 @@ button, input, select {
   font-size: 0.82rem;
   color: #CBD5E1;
   line-height: 1.4;
-}
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 0 auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 16px 0;
-  font-size: 0.76rem;
-  color: #64748B;
-}
-
-.footer-bottom-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.footer-legal-nav {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer-legal-link {
-  color: #94A3B8;
-}
-
-.footer-legal-link:hover {
-  color: #FFFFFF;
-}
-
-.footer-legal-sep {
-  opacity: 0.4;
 }
 
 /* ==========================================================================
