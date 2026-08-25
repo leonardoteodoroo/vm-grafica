@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <!-- =========================================================================
+     TEMPLATE CANÔNICO DE PRODUTO - VM GRÁFICA RÁPIDA
+     Instruções de personalização:
+     1. Substitua "{{NOME_PRODUTO}}" pelo título real do produto.
+     2. Substitua "{{SLUG_PRODUTO}}" pela URL/arquivo (ex: produto-cartao.html).
+     3. Ajuste as imagens em /assets/images/{{PASTA}}/ e os preços no configurador.
+     ========================================================================= -->
+
+  <!-- Primary SEO Meta Tags -->
+  <title>{{NOME_PRODUTO}} | VM Gráfica Goiânia</title>
+  <meta name="title" content="{{NOME_PRODUTO}} | VM Gráfica Goiânia">
+  <meta name="description" content="Personalize {{NOME_PRODUTO}} com impressão de alta resolução e acabamento premium em Goiânia. Produção expressa e entrega rápida no Conjunto Primavera.">
+  <meta name="keywords" content="{{NOME_PRODUTO}}, grafica rapida goiania, papelaria personalizada, brindes personalizados goiania">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vm.semprenamoda.com.br/{{SLUG_PRODUTO}}.html">
+  
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://vm.semprenamoda.com.br/{{SLUG_PRODUTO}}.html">
+  <meta property="og:title" content="{{NOME_PRODUTO}} | VM Gráfica Goiânia">
+  <meta property="og:description" content="Personalize {{NOME_PRODUTO}} com qualidade fotográfica e acabamento nobre. Produção rápida e orçamento imediato em Goiânia!">
+  <meta property="og:image" content="https://vm.semprenamoda.com.br/assets/images/logo-vm-grafica.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+
+  <!-- Favicon & PWA -->
+  <link rel="icon" type="image/jpeg" href="/assets/images/logo-vm-grafica.jpg">
+  <meta name="theme-color" content="#0B132B">
+
+  <!-- Performance: Preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- CSS Global -->
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Dados Estruturados Schema.org (Product & LocalBusiness) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "{{NOME_PRODUTO}}",
+    "image": "https://vm.semprenamoda.com.br/assets/images/logo-vm-grafica.jpg",
+    "description": "Personalize {{NOME_PRODUTO}} com acabamento premium e alta durabilidade em Goiânia.",
+    "brand": {
+      "@type": "Brand",
+      "name": "VM Gráfica Rápida"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "BRL",
+      "lowPrice": "19.90",
+      "highPrice": "35.00",
+      "offerCount": "4",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "LocalBusiness",
+        "name": "VM Gráfica Rápida & Papelaria Personalizada",
+        "telephone": "+5562993725371",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua CP, 05 - Qd 09 LT 18",
+          "addressLocality": "Goiânia",
+          "addressRegion": "GO",
+          "postalCode": "74477-203",
+          "addressCountry": "BR"
+        }
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "48"
+    }
+  }
+  </script>
+</head>
+<body class="has-product-configurator">
+
+  <!-- 1. TOPBAR DE ATENDIMENTO -->
+  <aside class="topbar" aria-label="Informações Rápidas">
+    <div class="topbar-inner">
+      <div class="topbar-item">
+        <span class="topbar-icon" aria-hidden="true">⚡</span>
+        <span>Produção Expressa & Retirada no Balcão • Conjunto Primavera, Goiânia</span>
+      </div>
+      <div class="topbar-item topbar-right">
+        <a href="https://wa.me/5562993725371" target="_blank" rel="noopener noreferrer" class="topbar-link">
+          <span class="status-indicator"></span> Atendimento WhatsApp: (62) 99372-5371
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 2. HEADER & NAVBAR CANÔNICA -->
+  <header class="header" role="banner">
+    <nav class="navbar" aria-label="Navegação Principal">
+      <a href="/" class="nav-brand" aria-label="VM Gráfica - Página Inicial">
+        <img src="/assets/images/logo-vm-grafica.jpg" alt="Logo VM Gráfica Rápida" class="brand-logo-img" width="48" height="48">
+        <div class="brand-text-block">
+          <span class="brand-title">VM GRÁFICA</span>
+          <span class="brand-subtitle">Rápida & Personalizados</span>
+        </div>
+      </a>
+
+      <!-- Menu Hambúrguer (3 Traços) -->
+      <button class="nav-menu-toggle" id="navMenuToggle" aria-label="Abrir Menu de Navegação" aria-expanded="false" aria-controls="navMenuLinks">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- Links de Navegação -->
+      <ul class="nav-links" id="navMenuLinks" role="menubar">
+        <li role="none"><a href="/" class="nav-link" role="menuitem">Início</a></li>
+        <li role="none"><a href="/#produtos" class="nav-link" role="menuitem">Catálogo</a></li>
+        <li role="none"><a href="/#acabamentos" class="nav-link" role="menuitem">Acabamentos</a></li>
+        <li role="none"><a href="/institucional.html" class="nav-link" role="menuitem">Institucional</a></li>
+        <li role="none"><a href="/#faq" class="nav-link" role="menuitem">Dúvidas</a></li>
+        <li role="none"><a href="/#contato" class="nav-link" role="menuitem">Contato</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/5562993725371" class="btn btn-whatsapp nav-cta-btn" target="_blank" rel="noopener noreferrer">
+          <span>Orçamento WhatsApp</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 3. BREADCRUMB EM LINHA ÚNICA COM TRUNCAÇÃO AUTOMÁTICA -->
+  <nav class="breadcrumb-bar" aria-label="Trilha de Navegação">
+    <div class="breadcrumb-inner">
+      <a href="/">Início</a>
+      <span class="bc-sep">/</span>
+      <a href="/#produtos">{{CATEGORIA_PRODUTO}}</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">{{NOME_PRODUTO}}</span>
+    </div>
+  </nav>
+
+  <!-- 4. SEÇÃO PRINCIPAL DO PRODUTO (LAYOUT RESPIRÁVEL LADO A LADO NO DESKTOP & MOBILE-FIRST) -->
+  <main class="product-stage" id="produto-configurador-root" data-product-name="{{NOME_PRODUTO}}">
+    <div class="product-stage-inner">
+      
+      <!-- COLUNA ESQUERDA: GALERIA DE FOTOS (FOTO PRINCIPAL + 5 MINIATURAS + BADGES) -->
+      <section class="product-gallery-block" aria-label="Galeria de Fotos do Produto">
+        <div class="product-hero-image-box">
+          <span class="photo-badge">✨ Qualidade Fotográfica HD</span>
+          <img id="main-product-img" 
+               src="/assets/images/logo-vm-grafica.jpg" 
+               alt="{{NOME_PRODUTO}} com Impressão de Alta Resolução" 
+               class="product-stage-img" 
+               width="600" 
+               height="600">
+        </div>
+
+        <!-- 5 MINIATURAS INTERATIVAS LADO A LADO -->
+        <div class="product-thumbs-strip" role="tablist" aria-label="Miniaturas do Produto">
+          <button class="thumb-card is-active" 
+                  role="tab" 
+                  aria-selected="true" 
+                  data-img="/assets/images/logo-vm-grafica.jpg" 
+                  data-alt="{{NOME_PRODUTO}} - Visão Principal">
+            <img src="/assets/images/logo-vm-grafica.jpg" alt="Miniatura Modelo 1" width="90" height="90">
+            <span class="thumb-text">Padrão</span>
+          </button>
+
+          <button class="thumb-card" 
+                  role="tab" 
+                  aria-selected="false" 
+                  data-img="/assets/images/logo-vm-grafica.jpg" 
+                  data-alt="{{NOME_PRODUTO}} - Opção Premium">
+            <img src="/assets/images/logo-vm-grafica.jpg" alt="Miniatura Modelo 2" width="90" height="90">
+            <span class="thumb-text">Premium</span>
+          </button>
+
+          <button class="thumb-card" 
+                  role="tab" 
+                  aria-selected="false" 
+                  data-img="/assets/images/logo-vm-grafica.jpg" 
+                  data-alt="{{NOME_PRODUTO}} - Variação Especial">
+            <img src="/assets/images/logo-vm-grafica.jpg" alt="Miniatura Modelo 3" width="90" height="90">
+            <span class="thumb-text">Especial</span>
+          </button>
+
+          <button class="thumb-card" 
+                  role="tab" 
+                  aria-selected="false" 
+                  data-img="/assets/images/logo-vm-grafica.jpg" 
+                  data-alt="{{NOME_PRODUTO}} - Detalhe de Acabamento">
+            <img src="/assets/images/logo-vm-grafica.jpg" alt="Miniatura Detalhe" width="90" height="90">
+            <span class="thumb-text">Detalhe</span>
+          </button>
+
+          <button class="thumb-card" 
+                  role="tab" 
+                  aria-selected="false" 
+                  data-img="/assets/images/logo-vm-grafica.jpg" 
+                  data-alt="{{NOME_PRODUTO}} - Embalagem ou Aplicação">
+            <img src="/assets/images/logo-vm-grafica.jpg" alt="Miniatura Embalagem" width="90" height="90">
+            <span class="thumb-text">Entrega</span>
+          </button>
+        </div>
+
+        <!-- 3 BADGES DE CONFIANÇA & ESPECIFICAÇÕES RÁPIDAS -->
+        <div class="product-guarantees-row">
+          <div class="guarantee-box">
+            <span class="guarantee-icon">💎</span>
+            <div class="guarantee-body">
+              <strong>Alta Definição</strong>
+              <p>Cores vivas e traço nítido</p>
+            </div>
+          </div>
+          <div class="guarantee-box">
+            <span class="guarantee-icon">🛡️</span>
+            <div class="guarantee-body">
+              <strong>Garantia Total</strong>
+              <p>Conferência visual antes do envio</p>
+            </div>
+          </div>
+          <div class="guarantee-box">
+            <span class="guarantee-icon">⚡</span>
+            <div class="guarantee-body">
+              <strong>Produção Ágil</strong>
+              <p>Retirada em Goiânia ou entrega</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUNA DIREITA: INTRODUÇÃO + CONFIGURADOR DE PREÇOS -->
+      <section class="product-details-block" aria-label="Detalhes e Compra do Produto">
+        
+        <!-- 1º BLOCO (NO MOBILE FICA ACIMA DA IMAGEM E ABAIXO DA PAGINAÇÃO) -->
+        <div class="product-intro">
+          <div class="product-pill">✨ {{TAG_CATEGORIA_OU_LINHA}}</div>
+          <h1 class="product-main-heading">{{NOME_PRODUTO}}</h1>
+          
+          <div class="rating-badge-line">
+            <span class="stars">★★★★★</span>
+            <strong class="score">5.0</strong>
+            <span class="reviews-count">(48 clientes avaliaram no Google)</span>
+          </div>
+
+          <p class="product-description-text">
+            Personalize com <strong>sua arte, logotipo corporativo, fotos ou identidade visual</strong>. Produzido com insumos selecionados de alto padrão e acabamento impecável.
+          </p>
+        </div>
+
+        <!-- 2º BLOCO: PAINEL DO CONFIGURADOR DINÂMICO -->
+        <div class="configurator-panel">
+          
+          <!-- 1. MODELOS / ACABAMENTOS -->
+          <div class="config-section">
+            <div class="config-label-title">1. Escolha o Modelo / Acabamento:</div>
+            <div class="model-options-grid" role="radiogroup" aria-label="Modelos do Produto">
+              <button type="button" class="model-option is-selected" data-model="padrao" data-extra="0" role="radio" aria-checked="true">
+                <span class="opt-name">Modelo Padrão</span>
+                <span class="opt-desc">Acabamento tradicional de alta qualidade</span>
+                <span class="opt-price">Incluso</span>
+              </button>
+              <button type="button" class="model-option" data-model="premium" data-extra="10" role="radio" aria-checked="false">
+                <span class="opt-name">Modelo Premium</span>
+                <span class="opt-desc">Acabamento nobre / enobrecimento</span>
+                <span class="opt-price">+ R$ 10,00/un</span>
+              </button>
+              <button type="button" class="model-option" data-model="especial" data-extra="5" role="radio" aria-checked="false">
+                <span class="opt-name">Modelo Especial</span>
+                <span class="opt-desc">Variação de cor ou textura</span>
+                <span class="opt-price">+ R$ 5,00/un</span>
+              </button>
+              <button type="button" class="model-option" data-model="kit" data-extra="7" role="radio" aria-checked="false">
+                <span class="opt-name">Com Embalagem Presente</span>
+                <span class="opt-desc">Embalagem especial com laço/tag</span>
+                <span class="opt-price">+ R$ 7,00/un</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. QUANTIDADE E FAIXAS DE PREÇO CLICÁVEIS -->
+          <div class="config-section">
+            <div class="config-label-row">
+              <div class="config-label-title">2. Quantidade Desejada:</div>
+              <span class="volume-save-tag">🔥 Desconto progressivo no atacado</span>
+            </div>
+
+            <!-- CONTROLES DE QUANTIDADE (STEPPER + ATALHOS RÁPIDOS) -->
+            <div class="quantity-controls-row">
+              <div class="stepper-widget">
+                <button type="button" class="stepper-action" id="qty-minus" aria-label="Diminuir Quantidade">−</button>
+                <input type="number" id="qty-input" value="1" min="1" max="10000" class="stepper-val" aria-label="Quantidade Numérica">
+                <button type="button" class="stepper-action" id="qty-plus" aria-label="Aumentar Quantidade">+</button>
+              </div>
+              <div class="quick-qty-buttons">
+                <button type="button" class="quick-qty-btn is-active" data-qty="1">1 un</button>
+                <button type="button" class="quick-qty-btn" data-qty="5">5 un</button>
+                <button type="button" class="quick-qty-btn" data-qty="15">15 un</button>
+                <button type="button" class="quick-qty-btn" data-qty="50">50 un</button>
+              </div>
+            </div>
+
+            <!-- 4 FAIXAS DE DESCONTO LADO A LADO ATÉ NO MOBILE (100% CLICÁVEIS) -->
+            <div class="volume-tiers-row" role="group" aria-label="Faixas de Desconto por Quantidade">
+              <button type="button" class="tier-card is-current" data-min="1" data-max="4" title="Selecionar 1 unidade (R$ 35,00/un)">
+                <span class="tier-qty">1 a 4 un</span>
+                <span class="tier-cost">R$ 35,00</span>
+              </button>
+              <button type="button" class="tier-card" data-min="5" data-max="14" title="Selecionar 5 unidades com 15% de desconto (R$ 29,90/un)">
+                <span class="tier-qty">5 a 14 un</span>
+                <span class="tier-cost">R$ 29,90</span>
+                <span class="tier-disc">-15%</span>
+              </button>
+              <button type="button" class="tier-card" data-min="15" data-max="49" title="Selecionar 15 unidades com 28% de desconto (R$ 24,90/un)">
+                <span class="tier-qty">15 a 49 un</span>
+                <span class="tier-cost">R$ 24,90</span>
+                <span class="tier-disc">-28%</span>
+              </button>
+              <button type="button" class="tier-card" data-min="50" data-max="10000" title="Selecionar 50 unidades no atacado com 43% de desconto (R$ 19,90/un)">
+                <span class="tier-qty">50+ un</span>
+                <span class="tier-cost">R$ 19,90</span>
+                <span class="tier-disc atacado">-43% Atacado</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. RESUMO DE VALORES E BOTÃO DE PEDIDO VIA WHATSAPP -->
+          <div class="price-quote-card">
+            <div class="price-line">
+              <span class="price-lbl">Preço Unitário:</span>
+              <span class="price-val" id="summary-unit-price">R$ 35,00 / un</span>
+            </div>
+            <div class="price-line total-highlight">
+              <div class="total-label-wrap">
+                <span class="price-lbl-bold">Total Estimado:</span>
+                <span class="items-count-tag" id="summary-items-count">(1 unidade selecionada)</span>
+              </div>
+              <span class="price-total-val" id="summary-total-price">R$ 35,00</span>
+            </div>
+
+            <!-- CTA WHATSAPP DIRETO -->
+            <a href="#" id="btn-buy-whatsapp" class="btn btn-whatsapp-cta" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="5 5 14 14" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/></svg>
+              <span>Personalizar no WhatsApp com Desconto</span>
+            </a>
+            
+            <p class="order-guarantee-note">
+              🔒 Envie sua arte ou fotos no WhatsApp. Montamos prévia digital antes da produção.
+            </p>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- 5. ESPECIFICAÇÕES TÉCNICAS -->
+  <section class="section-full specs-zone">
+    <div class="specs-inner-wrap">
+      <div class="section-header-center">
+        <h2 class="section-title">Ficha Técnica & Detalhes do Produto</h2>
+        <p style="color: var(--text-secondary);">Transparência em materiais, formatos e processos de impressão.</p>
+      </div>
+
+      <div class="specs-table-card">
+        <div class="spec-row">
+          <span class="spec-name">Material / Base:</span>
+          <span class="spec-val">Insumo Premium de Alta Resistência</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-name">Dimensões / Formato:</span>
+          <span class="spec-val">Sob Medida / Formato Padrão Comercial</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-name">Tecnologia de Impressão:</span>
+          <span class="spec-val">Alta Resolução Fotográfica HD / DTF UV / Sublimação</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-name">Prazo de Produção:</span>
+          <span class="spec-val">24h a 48h úteis após aprovação da arte</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-name">Opções de Retirada:</span>
+          <span class="spec-val">Balcão em Goiânia (Conjunto Primavera) ou Entrega Expressa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PROCESSO DE PRODUÇÃO EM 4 PASSOS -->
+  <section class="section-full how-to-order-zone">
+    <div class="section-header-center">
+      <h2 class="section-title">Como Funciona Seu Pedido</h2>
+      <p style="color: var(--text-secondary);">Simples, transparente e direto pelo WhatsApp.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3 class="step-title">Escolha o Modelo</h3>
+        <p class="step-desc">Selecione o acabamento desejado e a quantidade estimada nesta página.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3 class="step-title">Envie sua Ideia</h3>
+        <p class="step-desc">Chame no WhatsApp e envie sua arte, foto, frase ou logotipo da sua empresa.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3 class="step-title">Aprovação Visual</h3>
+        <p class="step-desc">Montamos a prévia digital para você aprovar antes de qualquer impressão física.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3 class="step-title">Produção & Entrega</h3>
+        <p class="step-desc">Imprimimos com acabamento de excelência. Retire no balcão ou receba em casa/empresa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. DÚVIDAS FREQUENTES (FAQ CHAT ACCORDION CANÔNICO) -->
+  <section class="section-full faq-zone">
+    <div class="faq-inner-wrap">
+      <div class="section-header-center">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <p style="color: var(--text-secondary);">Tire suas dúvidas sobre criação de arte, prazos e entregas em Goiânia.</p>
+      </div>
+
+      <div class="faq-chat-container">
+        <div class="faq-chat-timestamp">
+          <span class="faq-chat-status-dot" aria-hidden="true"></span>
+          <span>Especialistas VM Gráfica • Atendimento Online</span>
+        </div>
+
+        <div class="faq-chat-list" role="presentation">
+          <!-- Dúvida 1 -->
+          <div class="faq-chat-card is-open" data-id="modelo-1">
+            <button type="button" class="faq-chat-trigger" aria-expanded="true" aria-controls="faq-modelo-answer-1" id="faq-modelo-trigger-1">
+              <div class="faq-chat-user-bubble active">
+                <span class="faq-chat-sticker sticker-left" aria-hidden="true">🎨</span>
+                <span class="faq-chat-question-text">Vocês montam a arte se eu não tiver o arquivo pronto?</span>
+              </div>
+              <div class="faq-chat-toggle-btn" aria-hidden="true">
+                <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </div>
+            </button>
+            <div class="faq-chat-collapse" id="faq-modelo-answer-1" role="region" aria-labelledby="faq-modelo-trigger-1">
+              <div class="faq-chat-answer-thread">
+                <div class="faq-chat-assistant-bubble">
+                  <div class="faq-chat-bubble-arrow" aria-hidden="true"></div>
+                  <div class="faq-chat-answer-content">
+                    <p><strong>Sim!</strong> Nossa equipe faz o ajuste do seu logotipo, foto ou frase e envia a prévia digital para você aprovar antes de iniciar a confecção.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dúvida 2 -->
+          <div class="faq-chat-card" data-id="modelo-2">
+            <button type="button" class="faq-chat-trigger" aria-expanded="false" aria-controls="faq-modelo-answer-2" id="faq-modelo-trigger-2">
+              <div class="faq-chat-user-bubble">
+                <span class="faq-chat-sticker sticker-right" aria-hidden="true">⚡</span>
+                <span class="faq-chat-question-text">Qual o prazo médio de produção em Goiânia?</span>
+              </div>
+              <div class="faq-chat-toggle-btn" aria-hidden="true">
+                <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </div>
+            </button>
+            <div class="faq-chat-collapse" id="faq-modelo-answer-2" role="region" aria-labelledby="faq-modelo-trigger-2">
+              <div class="faq-chat-answer-thread">
+                <div class="faq-chat-assistant-bubble">
+                  <div class="faq-chat-bubble-arrow" aria-hidden="true"></div>
+                  <div class="faq-chat-answer-content">
+                    <p>O prazo padrão é de <strong>24h a 48h úteis</strong> após a aprovação da arte. Para demandas urgentes, consulte nossa disponibilidade imediata no WhatsApp.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CÁPSULA FLUTUANTE DESPREGADA NO MOBILE (FLOATING ISLAND CTA) -->
+  <aside class="sticky-mobile-buy-bar" aria-label="Ação Rápida de Compra no Mobile">
+    <div class="sticky-bar-content">
+      <div class="sticky-bar-info">
+        <span class="sticky-prod-name">{{NOME_PRODUTO}}</span>
+        <span class="sticky-prod-price" id="sticky-total-price">R$ 35,00</span>
+      </div>
+      <a href="#" id="btn-sticky-whatsapp" class="btn btn-whatsapp-sticky" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="5 5 14 14" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/></svg>
+        <span>Pedir no WhatsApp</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- 9. FOOTER GLOBAL CANÔNICO COM DEDICATÓRIA DOURADA -->
+  <site-footer></site-footer>
+
+  <!-- JS Master -->
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

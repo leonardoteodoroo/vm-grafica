@@ -3,6 +3,8 @@ import './components/faq-accordion.js';
 import { setupFaqChatInteractions } from './components/faq-accordion.js';
 import './components/product-carousel.js';
 import { setupProductCarousels } from './components/product-carousel.js';
+import './components/product-configurator.js';
+import { setupProductConfigurators } from './components/product-configurator.js';
 
 /**
  * VM GRÁFICA RÁPIDA - JAVASCRIPT MASTER
@@ -36,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Morphing WhatsApp Button (Padrão Mendes Fotografia)
   setupHeroCtaMorph();
 
-  // 5. Galeria e Configurador da Caneca (se estiver na página de produto)
-  setupProductCaneca();
+  // 5. Configurador Universal de Produtos (Caneca, Template e Novos Produtos)
+  setupProductConfigurators();
 });
 
 /**
@@ -174,170 +176,4 @@ function setupHeroCtaMorph() {
   window.addEventListener('orientationchange', invalidateMorphMetrics, { passive: true });
   window.addEventListener('pageshow', invalidateMorphMetrics);
   window.visualViewport?.addEventListener('resize', invalidateMorphMetrics, { passive: true });
-}
-
-/**
- * Galeria Interativa & Configurador da Caneca 325ml
- */
-function setupProductCaneca() {
-  const mainImg = document.getElementById('main-product-img');
-  const thumbCards = document.querySelectorAll('.thumb-card');
-  const modelOptions = document.querySelectorAll('.model-option');
-  const qtyInput = document.getElementById('qty-input');
-  const qtyMinus = document.getElementById('qty-minus');
-  const qtyPlus = document.getElementById('qty-plus');
-  const quickQtyBtns = document.querySelectorAll('.quick-qty-btn');
-  const tierCards = document.querySelectorAll('.tier-card');
-  const summaryUnitPrice = document.getElementById('summary-unit-price');
-  const summaryTotalPrice = document.getElementById('summary-total-price');
-  const summaryItemsCount = document.getElementById('summary-items-count');
-  const stickyTotalPrice = document.getElementById('sticky-total-price');
-  const btnBuyWhatsapp = document.getElementById('btn-buy-whatsapp');
-  const btnStickyWhatsapp = document.getElementById('btn-sticky-whatsapp');
-
-  if (!mainImg || !qtyInput) return;
-
-  // 1. Miniaturas da Galeria
-  thumbCards.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      thumbCards.forEach(t => t.classList.remove('is-active'));
-      btn.classList.add('is-active');
-      const newSrc = btn.getAttribute('data-img');
-      const newAlt = btn.getAttribute('data-alt');
-      mainImg.style.opacity = '0.3';
-      setTimeout(() => {
-        mainImg.src = newSrc;
-        mainImg.alt = newAlt;
-        mainImg.style.opacity = '1';
-      }, 120);
-    });
-  });
-
-  // 2. Seleção de Modelos
-  let selectedModel = 'classica';
-  let selectedModelName = 'Branca Clássica';
-  let modelExtraCost = 0;
-
-  modelOptions.forEach((opt) => {
-    opt.addEventListener('click', () => {
-      modelOptions.forEach(o => o.classList.remove('is-selected'));
-      opt.classList.add('is-selected');
-      selectedModel = opt.getAttribute('data-model');
-      selectedModelName = opt.querySelector('.opt-name')?.textContent || 'Branca Clássica';
-      modelExtraCost = parseFloat(opt.getAttribute('data-extra') || '0');
-
-      // Trocar imagem principal de acordo com o modelo selecionado
-      if (selectedModel === 'classica') switchGallery(0);
-      else if (selectedModel === 'magica') switchGallery(1);
-      else if (selectedModel === 'colorida') switchGallery(2);
-      else if (selectedModel === 'presente') switchGallery(4);
-
-      calculatePrice();
-    });
-  });
-
-  function switchGallery(index) {
-    if (thumbCards[index]) {
-      thumbCards[index].click();
-    }
-  }
-
-  // 3. Quantidade e Faixas de Preço
-  function getBasePricePerUnit(qty) {
-    if (qty >= 50) return 19.90;
-    if (qty >= 15) return 24.90;
-    if (qty >= 5) return 29.90;
-    return 35.00;
-  }
-
-  function calculatePrice() {
-    let qty = parseInt(qtyInput.value, 10);
-    if (isNaN(qty) || qty < 1) qty = 1;
-
-    const baseUnit = getBasePricePerUnit(qty);
-    const finalUnit = baseUnit + modelExtraCost;
-    const finalTotal = finalUnit * qty;
-
-    const formattedUnit = finalUnit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    const formattedTotal = finalTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
-    if (summaryUnitPrice) summaryUnitPrice.textContent = `${formattedUnit} / un`;
-    if (summaryTotalPrice) summaryTotalPrice.textContent = formattedTotal;
-    if (summaryItemsCount) summaryItemsCount.textContent = `(${qty} ${qty === 1 ? 'unidade selecionada' : 'unidades selecionadas'})`;
-    if (stickyTotalPrice) stickyTotalPrice.textContent = formattedTotal;
-
-    // Destacar faixa ativa
-    tierCards.forEach((card) => {
-      const min = parseInt(card.getAttribute('data-min'), 10);
-      const max = parseInt(card.getAttribute('data-max'), 10);
-      if (qty >= min && qty <= max) {
-        card.classList.add('is-current');
-      } else {
-        card.classList.remove('is-current');
-      }
-    });
-
-    // Atualizar botões de atalho
-    quickQtyBtns.forEach((btn) => {
-      const btnQty = parseInt(btn.getAttribute('data-qty'), 10);
-      if (btnQty === qty) btn.classList.add('is-active');
-      else btn.classList.remove('is-active');
-    });
-
-    // Atualizar Links do WhatsApp
-    const msg = `Olá VM Gráfica! Gostaria de fazer o pedido de:
-
-` +
-      `📦 *Produto:* Caneca de Porcelana 325ml
-` +
-      `✨ *Modelo:* ${selectedModelName}
-` +
-      `🔢 *Quantidade:* ${qty} un
-` +
-      `💵 *Valor Unitário:* ${formattedUnit}
-` +
-      `💰 *Total Estimado:* ${formattedTotal}
-
-` +
-      `Podem me orientar sobre o envio da arte e prazo de produção?`;
-
-    const zapUrl = `https://wa.me/5562993725371?text=${encodeURIComponent(msg)}`;
-    if (btnBuyWhatsapp) btnBuyWhatsapp.href = zapUrl;
-    if (btnStickyWhatsapp) btnStickyWhatsapp.href = zapUrl;
-  }
-
-  // Eventos de Quantidade
-  if (qtyMinus) {
-    qtyMinus.addEventListener('click', () => {
-      let q = parseInt(qtyInput.value, 10) || 1;
-      if (q > 1) {
-        qtyInput.value = q - 1;
-        calculatePrice();
-      }
-    });
-  }
-
-  if (qtyPlus) {
-    qtyPlus.addEventListener('click', () => {
-      let q = parseInt(qtyInput.value, 10) || 1;
-      qtyInput.value = q + 1;
-      calculatePrice();
-    });
-  }
-
-  if (qtyInput) {
-    qtyInput.addEventListener('input', calculatePrice);
-    qtyInput.addEventListener('change', calculatePrice);
-  }
-
-  quickQtyBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const q = parseInt(btn.getAttribute('data-qty'), 10);
-      qtyInput.value = q;
-      calculatePrice();
-    });
-  });
-
-  // Cálculo inicial
-  calculatePrice();
 }

@@ -9,7 +9,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         caneca: resolve(__dirname, 'produto-caneca.html'),
-        institucional: resolve(__dirname, 'institucional.html')
+        institucional: resolve(__dirname, 'institucional.html'),
+        modelo: resolve(__dirname, 'produto-modelo.html')
       }
     }
   }
