@@ -111,7 +111,7 @@ button, input, select {
 }
 
 .section-hero {
-  padding-top: 140px;
+  padding-top: 50px;
   min-height: 90vh;
   display: flex;
   align-items: center;
@@ -131,10 +131,7 @@ button, input, select {
   align-items: center;
   font-size: 0.85rem;
   color: var(--text-secondary);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
+  position: relative;
   backdrop-filter: var(--blur-glass);
 }
 
@@ -151,10 +148,7 @@ button, input, select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  top: 37px;
-  left: 0;
-  z-index: 999;
+  position: relative;
   backdrop-filter: var(--blur-glass);
 }
 
