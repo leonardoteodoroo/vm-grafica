@@ -35,5 +35,5 @@ User-agent: *
 Allow: /
 
 # 5. Localização do Sitemap e Recursos para LLM
-Sitemap: https://vmgrafica.com.br/sitemap.xml
-# LLM Context: https://vmgrafica.com.br/llms.txt
+Sitemap: https://vm.semprenamoda.com.br/sitemap.xml
+# LLM Context: https://vm.semprenamoda.com.br/llms.txt

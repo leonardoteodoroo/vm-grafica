@@ -1,6 +1,6 @@
-Contact: mailto:contato@vmgrafica.com.br
+Contact: mailto:contato@vm.semprenamoda.com.br
 Contact: https://wa.me/5562993725371
 Expires: 2027-12-31T23:59:59.000Z
 Preferred-Languages: pt-br, en
-Canonical: https://vmgrafica.com.br/.well-known/security.txt
-Policy: https://vmgrafica.com.br/#faq
+Canonical: https://vm.semprenamoda.com.br/.well-known/security.txt
+Policy: https://vm.semprenamoda.com.br/#faq

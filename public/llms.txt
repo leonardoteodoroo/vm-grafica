@@ -17,5 +17,5 @@
 - [Serviços Expressos de Balcão](/llms-full.txt#balcao): Fotos 3x4 para documentos, polaroid com ímã, cópias, encadernações e plastificações.
 
 ## Links Canônicos
-- [Website Oficial & Simulador de Preços](https://vmgrafica.com.br/): Calculadora interativa de orçamento em tempo real com envio direto para o WhatsApp.
-- [Documentação Completa de Produtos e Especificações Técnicas](https://vmgrafica.com.br/llms-full.txt): Base de conhecimento para agentes de IA e clientes.
+- [Website Oficial & Simulador de Preços](https://vm.semprenamoda.com.br/): Calculadora interativa de orçamento em tempo real com envio direto para o WhatsApp.
+- [Documentação Completa de Produtos e Especificações Técnicas](https://vm.semprenamoda.com.br/llms-full.txt): Base de conhecimento para agentes de IA e clientes.

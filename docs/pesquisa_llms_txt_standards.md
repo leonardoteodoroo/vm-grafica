@@ -68,18 +68,18 @@ Os 7 arquivos/padrões canônicos indispensáveis no estado da arte são:
 > Gráfica rápida e papelaria personalizada no Conjunto Primavera, Goiânia - GO. Especialistas em cartões 300g, copos DTF UV em alto relevo, blocos e brindes.
 
 ## Informações Principais
-- [Início e Calculadora](https://vmgrafica.com.br/): Simulador de orçamentos e pedidos expressos.
-- [Catálogo Completo](https://vmgrafica.com.br/llms-full.txt): Especificações técnicas completas de papéis, acabamentos e produtos.
-- [Contato e Localização](https://vmgrafica.com.br/#contato): Endereço em Goiânia e WhatsApp direto.
+- [Início e Calculadora](https://vm.semprenamoda.com.br/): Simulador de orçamentos e pedidos expressos.
+- [Catálogo Completo](https://vm.semprenamoda.com.br/llms-full.txt): Especificações técnicas completas de papéis, acabamentos e produtos.
+- [Contato e Localização](https://vm.semprenamoda.com.br/#contato): Endereço em Goiânia e WhatsApp direto.
 ```
 
 ### Estrutura do `.well-known/security.txt`
 ```text
-Contact: mailto:contato@vmgrafica.com.br
+Contact: mailto:contato@vm.semprenamoda.com.br
 Contact: tel:+5562993725371
 Expires: 2027-12-31T23:59:59.000Z
 Preferred-Languages: pt-br, en
-Canonical: https://vmgrafica.com.br/.well-known/security.txt
+Canonical: https://vm.semprenamoda.com.br/.well-known/security.txt
 ```
 
 ---
