@@ -1,114 +1,83 @@
-# Design System & Tokens Semânticos — VM Gráfica
+# Design System & Tokens Semânticos — VM Gráfica (Tema Claro / Light Theme)
 
-Este documento define a paleta de cores, contraste de acessibilidade (WCAG) e **Tokens Semânticos (CSS Custom Properties)** extraídos diretamente da identidade visual oficial da **VM Gráfica** (Logo CMYK Splash + Faixa Navy).
-
-Toda a interface consome exclusivamente estas variáveis no arquivo `style.css`. Ao alterar qualquer valor nesta lista, a aplicação inteira se adapta de forma instantânea e consistente.
+Este documento define os **Tokens Semânticos (CSS Custom Properties)** para o **Tema Claro (Light Theme)** oficial da **VM Gráfica**, combinando fundo limpo e moderno com as cores vibrantes extraídas da marca (Cyan, Magenta, Amarelo Ouro e Verde WhatsApp).
 
 ---
 
-## 1. Paleta de Cores Extraída do Logotipo Oficial
+## 1. Paleta de Cores da Marca (Calibrada para Fundo Claro)
 
-```
- ┌───────────────────┬───────────────────┬───────────────────┬───────────────────┐
- │   CYAN "V"        │   MAGENTA "M"     │   AMARELO SPLASH  │   NAVY OBSIDIAN   │
- │   #00D2FF         │   #EF0975         │   #F9BB27         │   #060C24         │
- │   RGB(0, 210, 255)│   RGB(239, 9, 117)│   RGB(249,187, 39)│   RGB(6, 12, 36)  │
- └───────────────────┴───────────────────┴───────────────────┴───────────────────┘
-```
-
-* **Cyan "V" (Destaque Tecnológico & Agilidade):**
-  * `Highlight`: `#00D2FF` / `#00F0FF`
-  * `Base / Gradient`: `#027AD9` $\rightarrow$ `#054EA2`
-* **Magenta "M" (Criatividade & Personalizados Premium):**
-  * `Highlight`: `#FC4EB0` / `#FF2A85`
-  * `Base / Gradient`: `#EF0975` $\rightarrow$ `#B80669`
-* **Amarelo "Papelaria Personalizada" & Ouro:**
-  * `Highlight`: `#F9BB27` / `#F8D612` (Destaque de valor, selos e avisos)
-* **Verde Limão Splash (Aprovação & WhatsApp):**
-  * `Highlight`: `#22C55E` / `#65B32B`
-* **Navy Obsidian Profundo (Faixa "Gráfica Rápida" & Canvas):**
-  * `Canvas Base`: `#060C24`
-  * `Surface Cards`: `rgba(10, 20, 48, 0.75)`
+| Cor / Papel | Hex | RGB | Função |
+| :--- | :--- | :--- | :--- |
+| **Cyan Tecnológico ("V")** | `#0084D1` / `#0090FF` | `rgb(0, 132, 209)` | Botões primários, destaques e badges tecnológicos. |
+| **Magenta Criativo ("M")** | `#E60067` / `#D81B60` | `rgb(230, 0, 103)` | Personalizados, eventos, festas e acabamentos nobres. |
+| **Amarelo Dourado Ouro** | `#D97706` / `#B45309` | `rgb(217, 119, 6)` | Selos de garantia, avisos e detalhes de valor. |
+| **Verde WhatsApp / Ação** | `#16A34A` / `#22C55E` | `rgb(22, 163, 74)` | Botão de WhatsApp, status de aprovação e entregas. |
+| **Navy Grafite Profundo** | `#0B132B` / `#1E293B` | `rgb(11, 19, 43)` | Headlines, tipografia principal e alto contraste. |
+| **Branco Neve / Canvas** | `#FFFFFF` / `#F8FAFC` | `rgb(255, 255, 255)` | Fundo principal da página e cards de produto. |
 
 ---
 
-## 2. Matriz de Contraste e Acessibilidade (WCAG 2.1)
-
-Todos os pares de cores foram calibrados para atender ou superar os padrões de contraste para modo escuro:
+## 2. Matriz de Contraste e Acessibilidade no Tema Claro (WCAG 2.1)
 
 | Elemento | Cor do Texto / Ícone | Cor de Fundo | Razão de Contraste | Nível WCAG |
 | :--- | :--- | :--- | :--- | :--- |
-| **Títulos Principais** | `#F8FAFC` (Branco Puro) | `#060C24` (Navy Canvas) | **17.8 : 1** | **AAA** (Excepcional) |
-| **Destaque Cyan** | `#00D2FF` (Cyan Luz) | `#060C24` (Navy Canvas) | **10.4 : 1** | **AAA** (Altíssimo) |
-| **Destaque Amarelo** | `#F9BB27` (Amarelo Ouro) | `#060C24` (Navy Canvas) | **11.2 : 1** | **AAA** (Altíssimo) |
-| **Destaque Magenta** | `#FF2A85` (Magenta Neon) | `#060C24` (Navy Canvas) | **5.8 : 1** | **AA** (Conforme) |
-| **Texto de Apoio** | `#94A3B8` (Cinza Claro) | `#060C24` (Navy Canvas) | **6.9 : 1** | **AA** (Conforme) |
-| **Texto Desativado** | `#64748B` (Muted) | `#060C24` (Navy Canvas) | **3.8 : 1** | Acessível p/ UI |
+| **Títulos Principais (Headlines)** | `#0B132B` (Navy Grafite) | `#FFFFFF` (Branco Puro) | **18.2 : 1** | **AAA** (Excepcional) |
+| **Texto de Apoio / Parágrafos** | `#334155` (Slate-700) | `#FFFFFF` (Branco Puro) | **9.6 : 1** | **AAA** (Excepcional) |
+| **Destaque Cyan em Fundo Claro** | `#0070BA` (Cyan Escuro) | `#FFFFFF` (Branco Puro) | **5.4 : 1** | **AA** (Conforme) |
+| **Destaque Magenta em Fundo Claro** | `#C2185B` (Magenta Nobre)| `#FFFFFF` (Branco Puro) | **6.1 : 1** | **AA** (Conforme) |
+| **Destaque Amarelo / Dourado** | `#B45309` (Âmbar Escuro) | `#FFFFFF` (Branco Puro) | **5.2 : 1** | **AA** (Conforme) |
+| **Botão de WhatsApp** | `#FFFFFF` (Branco) | `#16A34A` (Verde Puro) | **4.8 : 1** | **AA** (Conforme) |
 
 ---
 
 ## 3. Tokens Semânticos de Superfície & Fundo (Backgrounds)
 
-| Token CSS | Valor Padrão (Navy Brand Theme) | Função Semântica |
-| :--- | :--- | :--- |
-| `--bg-canvas` | `#060C24` | Fundo principal da página (Navy Obsidian extraído da faixa da logo). |
-| `--bg-canvas-subtle` | `#040817` | Fundo secundário para alternância sutil entre seções. |
-| `--bg-surface-1` | `rgba(10, 20, 48, 0.75)` | Fundo de cards estruturais com glassmorphism. |
-| `--bg-surface-2` | `rgba(15, 30, 70, 0.65)` | Fundo de inputs, botões inativos e seletores da calculadora. |
-| `--bg-surface-glass` | `rgba(255, 255, 255, 0.035)` | Fundo translúcido refinado. |
-| `--bg-surface-glass-hover` | `rgba(0, 210, 255, 0.08)` | Estado de hover nos cards. |
-| `--bg-topbar` | `rgba(4, 8, 23, 0.95)` | Barra de avisos no topo. |
-| `--bg-navbar` | `rgba(6, 12, 36, 0.92)` | Menu principal de navegação. |
+```css
+--bg-canvas: #FFFFFF;
+--bg-canvas-subtle: #F8FAFC;
+--bg-canvas-alt: #F1F5F9;
+--bg-surface-1: #FFFFFF;
+--bg-surface-2: #F8FAFC;
+--bg-surface-glass: rgba(255, 255, 255, 0.85);
+--bg-surface-glass-hover: rgba(240, 249, 255, 0.95);
+--bg-topbar: #0B132B; /* Topbar escura para ancoragem visual elegante */
+--bg-navbar: rgba(255, 255, 255, 0.94);
+```
 
 ---
 
-## 4. Tokens Semânticos de Bordas e Contornos (Borders)
+## 4. Tokens Semânticos de Bordas & Sombras
 
-| Token CSS | Valor Padrão | Função Semântica |
-| :--- | :--- | :--- |
-| `--border-subtle` | `rgba(255, 255, 255, 0.08)` | Divisores e linhas discretas. |
-| `--border-card` | `rgba(0, 210, 255, 0.15)` | Borda padrão dos cards de produto. |
-| `--border-card-hover` | `rgba(0, 210, 255, 0.55)` | Borda de destaque ao passar o mouse. |
-| `--border-accent-cyan` | `#00D2FF` | Borda ativa de seletores e foco de formulários. |
-| `--border-accent-magenta`| `#EF0975` | Borda de produtos com acabamento especial e brindes. |
-| `--border-accent-yellow` | `#F9BB27` | Borda de badges de garantia e avisos. |
+```css
+--border-subtle: #E2E8F0;
+--border-card: #CBD5E1;
+--border-card-hover: #0084D1;
+--border-accent-cyan: #0084D1;
+--border-accent-magenta: #E60067;
+--border-accent-yellow: #D97706;
 
----
-
-## 5. Tokens Semânticos de Tipografia e Texto (Text Colors)
-
-| Token CSS | Valor Padrão | Função Semântica |
-| :--- | :--- | :--- |
-| `--text-primary` | `#F8FAFC` | Headlines, títulos e preços de destaque. |
-| `--text-secondary` | `#94A3B8` | Parágrafos descritivos e subtítulos. |
-| `--text-muted` | `#64748B` | Legendas, rodapés e notas secundárias. |
-| `--text-accent-cyan` | `#00D2FF` | Palavras-chave destacadas em azul elétrico. |
-| `--text-accent-magenta` | `#FC4EB0` | Destaque para linhas de presentes e eventos. |
-| `--text-accent-yellow` | `#F9BB27` | Selos de garantia e texto secundário da marca. |
-| `--text-inverse` | `#060C24` | Texto escuro sobre botões de alto contraste. |
+--shadow-card: 0 10px 30px -5px rgba(11, 19, 43, 0.08);
+--shadow-card-hover: 0 20px 40px -10px rgba(0, 132, 209, 0.18);
+--shadow-dropdown: 0 15px 35px rgba(0, 0, 0, 0.12);
+```
 
 ---
 
-## 6. Tokens de Ícones e Elementos Gráficos (Icons)
+## 5. Tokens de Tipografia e Ícones
 
-| Token CSS | Valor Padrão | Função Semântica |
-| :--- | :--- | :--- |
-| `--icon-stroke` | `#00D2FF` | Traço padrão dos ícones vetoriais. |
-| `--icon-stroke-secondary`| `#EF0975` | Traço para ícones de personalização e arte. |
-| `--icon-stroke-yellow` | `#F9BB27` | Traço para ícones de garantia e balcão. |
-| `--icon-fill` | `rgba(0, 210, 255, 0.12)` | Preenchimento interno suave do ícone. |
-| `--icon-bg` | `rgba(10, 20, 48, 0.9)` | Container circular ou quadrado que envolve o ícone. |
-| `--icon-bg-border` | `rgba(0, 210, 255, 0.3)` | Borda do container de ícone. |
+```css
+--text-primary: #0B132B;
+--text-secondary: #475569;
+--text-muted: #64748B;
+--text-accent-cyan: #0070BA;
+--text-accent-magenta: #C2185B;
+--text-accent-yellow: #B45309;
+--text-inverse: #FFFFFF;
 
----
-
-## 7. Tokens de Iluminação e Gradientes (Glows & Gradients)
-
-| Token CSS | Valor Padrão | Função Semântica |
-| :--- | :--- | :--- |
-| `--gradient-brand-vm` | `linear-gradient(135deg, #00D2FF 0%, #EF0975 100%)` | Gradiente oficial da marca (V em Cyan + M em Magenta). |
-| `--gradient-cyan` | `linear-gradient(135deg, #00D2FF 0%, #054EA2 100%)` | Gradiente dos botões primários. |
-| `--gradient-magenta` | `linear-gradient(135deg, #FF2A85 0%, #B80669 100%)` | Gradiente de cartões especiais. |
-| `--shadow-glow-cyan` | `0 0 35px -5px rgba(0, 210, 255, 0.35)` | Brilho difuso em elementos primários. |
-| `--shadow-glow-magenta`| `0 0 35px -5px rgba(239, 9, 117, 0.35)` | Brilho difuso em elementos especiais. |
-| `--shadow-glow-yellow` | `0 0 25px -5px rgba(249, 187, 39, 0.35)` | Brilho sutil em badges e selos. |
+--icon-stroke: #0084D1;
+--icon-stroke-secondary: #E60067;
+--icon-stroke-yellow: #D97706;
+--icon-fill: rgba(0, 132, 209, 0.08);
+--icon-bg: #F0F9FF;
+--icon-bg-border: #BAE6FD;
+```

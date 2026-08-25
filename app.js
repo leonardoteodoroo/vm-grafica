@@ -342,7 +342,7 @@ function recalculatePrice() {
   );
 
   if (whatsappBtn) {
-    whatsappBtn.href = `https://wa.me/5500000000000?text=${zapMessage}`;
+    whatsappBtn.href = `https://wa.me/5562993725371?text=${zapMessage}`;
   }
 }
 

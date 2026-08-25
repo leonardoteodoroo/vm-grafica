@@ -1,0 +1,9 @@
+/* TEAM */
+  Owner / Gráfica: VM Gráfica Rápida & Papelaria Personalizada
+  Location: Goiânia, Goiás, Brasil
+  Contact: wa.me/5562993725371
+
+/* SITE */
+  Standards: HTML5, CSS3 Semantic Tokens, Vanilla JS, Vite, LLM Discoverability (llms.txt v2)
+  Typography: Outfit (Google Fonts)
+  Performance: Core Web Vitals Optimized, Edge-to-Edge Responsive

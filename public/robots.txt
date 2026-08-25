@@ -1,0 +1,39 @@
+# ==============================================================================
+# robots.txt — VM Gráfica Rápida & Papelaria Personalizada
+# Permissões de rastreamento para Motores de Busca e Agentes de IA
+# ==============================================================================
+
+# 1. Mecanismos de Busca Tradicionais & Agentes de Citação
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: Yandex
+User-agent: DuckDuckBot
+Allow: /
+
+# 2. Agentes de Busca e Citação de IA (Search / Retrieval)
+User-agent: OAI-SearchBot
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: ChatGPT-User
+Allow: /
+
+# 3. Bots de Treinamento e Scrapers em Massa (Restrição de Treinamento Bruto)
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: Diffbot
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /assets/
+
+# 4. Todos os outros robôs
+User-agent: *
+Allow: /
+
+# 5. Localização do Sitemap e Recursos para LLM
+Sitemap: https://vmgrafica.com.br/sitemap.xml
+# LLM Context: https://vmgrafica.com.br/llms.txt

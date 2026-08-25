@@ -1,0 +1,25 @@
+{
+  "name": "VM Gráfica Rápida & Papelaria Personalizada",
+  "short_name": "VM Gráfica",
+  "description": "Gráfica rápida, cartões 300g, tecnologia DTF UV em alto relevo e papelaria personalizada em Goiânia.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0084D1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/images/logo-vm-grafica.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/logo-vm-grafica.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "shopping", "productivity"]
+}
