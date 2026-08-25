@@ -1720,6 +1720,76 @@ button, input, select {
   line-height: 1.4;
 }
 
+/* ==========================================================================
+   DEDICATÓRIA DISCRETA E DOURADA (LEONARDO TEODORO)
+   ========================================================================== */
+
+.footer-dev-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+}
+
+.dev-gold-link {
+  color: #E5C07B;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(229, 192, 123, 0.08);
+  border: 1px solid rgba(229, 192, 123, 0.22);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.2px;
+}
+
+.dev-gold-link .dev-name {
+  font-weight: 800;
+  background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.25s ease;
+}
+
+.dev-gold-link:hover {
+  background: rgba(229, 192, 123, 0.16);
+  border-color: rgba(245, 158, 11, 0.55);
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.28);
+  transform: translateY(-1px);
+}
+
+.dev-gold-link .heart-pulse {
+  display: inline-block;
+  font-size: 0.85rem;
+  transition: transform 0.25s ease;
+  animation: subtleHeartBeat 2.4s ease-in-out infinite;
+}
+
+.dev-gold-link:hover .heart-pulse {
+  transform: scale(1.25);
+}
+
+@keyframes subtleHeartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.18);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.12);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
 .footer-legal-nav {
   display: flex;
   align-items: center;

@@ -106,11 +106,16 @@ export class SiteFooter extends HTMLElement {
           </div>
         </div>
 
-        <!-- Barra Inferior Limpa de Direitos (Sem links duplicados) -->
+        <!-- Barra Inferior Limpa de Direitos com Dedicatória Dourada Discreta -->
         <div class="footer-bottom">
-          <p class="footer-copyright" style="text-align: center; width: 100%; margin: 0 auto;">
+          <p class="footer-copyright">
             &copy; ${year} VM Gráfica Rápida & Papelaria Personalizada. Goiânia - GO. Todos os direitos reservados.
           </p>
+          <div class="footer-dev-credit">
+            <a href="https://instagram.com/leonardoteodoro.of" target="_blank" rel="noopener noreferrer" class="dev-gold-link" title="Desenvolvido por Leonardo Teodoro">
+              Feito com <span class="heart-pulse" aria-hidden="true">❤️</span> por <strong class="dev-name">Leonardo Teodoro</strong>
+            </a>
+          </div>
         </div>
       </footer>
     `;
