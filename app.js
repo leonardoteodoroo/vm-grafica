@@ -1,3 +1,5 @@
+import './components/footer.js';
+
 /**
  * VM Gráfica Rápida & Papelaria Personalizada
  * Scripts Principais & Interatividade (Home + Página de Produto)
