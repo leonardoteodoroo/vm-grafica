@@ -1267,10 +1267,10 @@ button, input, select {
   }
 
   .footer-contact-col {
-    grid-column: 1 / -1;
-    margin-top: 10px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    grid-column: span 3 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none !important;
   }
 
   .footer-col-title {
@@ -3129,5 +3129,121 @@ button, input, select {
   .footer-col-title {
     font-size: 0.82rem;
     margin-bottom: 8px;
+  }
+}
+
+
+/* ==========================================================================
+   ALINHAMENTO RIGOROSO DO RODAPÉ (ATENDIMENTO & INSTITUCIONAL)
+   ========================================================================== */
+
+.footer-grid {
+  display: grid;
+  align-items: start !important;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-self: start !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.footer-col-title {
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  line-height: 1.2 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.footer-col-title::after {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: var(--brand-cyan);
+  border-radius: 2px;
+}
+
+.footer-contact-col, .footer-col-institucional {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  border-top: none !important;
+  align-self: start !important;
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 24px 14px !important;
+    align-items: start !important;
+  }
+
+  .footer-brand-col {
+    grid-column: 1 / -1 !important;
+  }
+
+  .footer-col-catalogo {
+    grid-column: span 2 !important;
+  }
+
+  .footer-col-acabamentos {
+    grid-column: span 2 !important;
+  }
+
+  .footer-col-ajuda {
+    grid-column: span 2 !important;
+  }
+
+  .footer-col-atendimento, .footer-col-institucional {
+    grid-column: span 3 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+    align-self: start !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 20px 12px !important;
+    align-items: start !important;
+  }
+
+  .footer-brand-col {
+    grid-column: 1 / -1 !important;
+    margin-bottom: 4px;
+  }
+
+  .footer-col-catalogo {
+    grid-column: span 2 !important;
+  }
+
+  .footer-col-acabamentos {
+    grid-column: span 2 !important;
+  }
+
+  .footer-col-ajuda {
+    grid-column: span 2 !important;
+  }
+
+  .footer-col-atendimento, .footer-col-institucional {
+    grid-column: span 3 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+    align-self: start !important;
+  }
+
+  .footer-col-title {
+    font-size: 0.82rem !important;
+    margin-bottom: 10px !important;
   }
 }
