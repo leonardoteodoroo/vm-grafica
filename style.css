@@ -2047,7 +2047,7 @@ button, input, select {
   }
 
   .footer {
-    padding-bottom: calc(140px + env(safe-area-inset-bottom, 20px));
+    padding-bottom: calc(150px + env(safe-area-inset-bottom, 20px));
   }
 
   .footer-bottom {
@@ -3113,7 +3113,7 @@ button, input, select {
 .sticky-mobile-buy-bar {
   display: none;
   position: fixed;
-  bottom: calc(38px + env(safe-area-inset-bottom, 16px));
+  bottom: calc(48px + env(safe-area-inset-bottom, 16px));
   left: 14px;
   right: 14px;
   width: auto;
