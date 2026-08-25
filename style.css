@@ -2046,6 +2046,10 @@ button, input, select {
     font-size: 0.74rem;
   }
 
+  .footer {
+    padding-bottom: calc(115px + env(safe-area-inset-bottom, 20px));
+  }
+
   .footer-bottom {
     flex-direction: column-reverse;
     text-align: center;
@@ -3112,16 +3116,16 @@ button, input, select {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid var(--border-card);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
-  padding-top: 8px;
-  padding-left: 14px;
-  padding-right: 14px;
-  padding-bottom: max(10px, env(safe-area-inset-bottom, 12px));
-  z-index: 99;
+  box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.12);
+  padding-top: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: calc(18px + env(safe-area-inset-bottom, 16px));
+  z-index: 1000;
 }
 
 .sticky-bar-content {
@@ -3137,6 +3141,7 @@ button, input, select {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  justify-content: center;
 }
 
 .sticky-prod-name {
@@ -3150,7 +3155,7 @@ button, input, select {
 }
 
 .sticky-prod-price {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 900;
   color: var(--brand-green);
   line-height: 1.2;
@@ -3159,11 +3164,11 @@ button, input, select {
 .btn-whatsapp-sticky {
   background: var(--brand-green);
   color: #FFFFFF;
-  padding: 7px 14px;
+  padding: 8px 14px;
   font-size: 0.76rem;
   font-weight: 800;
   border-radius: var(--radius-full);
-  box-shadow: 0 2px 10px rgba(22, 163, 74, 0.28);
+  box-shadow: 0 3px 12px rgba(22, 163, 74, 0.32);
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -3175,7 +3180,7 @@ button, input, select {
 .btn-whatsapp-sticky:hover {
   background: #15803D;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.35);
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.38);
 }
 
 .btn-whatsapp-sticky:active {
