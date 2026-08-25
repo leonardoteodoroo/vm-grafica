@@ -1,56 +1,73 @@
 /* ==========================================================================
-   DESIGN SYSTEM & SEMANTIC TOKENS - VM GRÁFICA
+   DESIGN SYSTEM & SEMANTIC TOKENS - VM GRÁFICA (PALETA DA LOGO OFICIAL)
    ========================================================================== */
 
 :root {
-  /* 1. Superfícies & Fundos */
-  --bg-canvas: #070A0F;
-  --bg-canvas-subtle: #0B111A;
-  --bg-surface-1: rgba(17, 24, 39, 0.75);
-  --bg-surface-2: rgba(30, 41, 59, 0.65);
-  --bg-surface-glass: rgba(255, 255, 255, 0.03);
-  --bg-surface-glass-hover: rgba(255, 255, 255, 0.08);
-  --bg-topbar: rgba(11, 17, 26, 0.95);
-  --bg-navbar: rgba(7, 10, 15, 0.85);
+  /* 1. Cores de Marca Extraídas da Logo */
+  --brand-cyan: #00D2FF;
+  --brand-cyan-deep: #054EA2;
+  --brand-magenta: #EF0975;
+  --brand-magenta-neon: #FF2A85;
+  --brand-yellow: #F9BB27;
+  --brand-green: #22C55E;
+  --brand-navy: #060C24;
+  --brand-navy-dark: #040817;
 
-  /* 2. Bordas & Contornos */
+  /* 2. Superfícies & Fundos (Navy Obsidian Theme) */
+  --bg-canvas: #060C24;
+  --bg-canvas-subtle: #040817;
+  --bg-surface-1: rgba(10, 20, 48, 0.78);
+  --bg-surface-2: rgba(15, 30, 70, 0.65);
+  --bg-surface-glass: rgba(255, 255, 255, 0.035);
+  --bg-surface-glass-hover: rgba(0, 210, 255, 0.08);
+  --bg-topbar: rgba(4, 8, 23, 0.95);
+  --bg-navbar: rgba(6, 12, 36, 0.92);
+
+  /* 3. Bordas & Contornos */
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-card: rgba(255, 255, 255, 0.12);
-  --border-card-hover: rgba(0, 240, 255, 0.4);
-  --border-accent-cyan: #00F0FF;
-  --border-accent-magenta: #EC4899;
-  --border-focus: #00F0FF;
+  --border-card: rgba(0, 210, 255, 0.15);
+  --border-card-hover: rgba(0, 210, 255, 0.55);
+  --border-accent-cyan: #00D2FF;
+  --border-accent-magenta: #EF0975;
+  --border-accent-yellow: #F9BB27;
+  --border-focus: #00D2FF;
 
-  /* 3. Tipografia & Cores de Texto */
+  /* 4. Tipografia & Cores de Texto (Alto Contraste WCAG AAA) */
   --text-primary: #F8FAFC;
   --text-secondary: #94A3B8;
   --text-muted: #64748B;
-  --text-accent-cyan: #00F0FF;
-  --text-accent-magenta: #F472B6;
-  --text-inverse: #070A0F;
+  --text-accent-cyan: #00D2FF;
+  --text-accent-magenta: #FC4EB0;
+  --text-accent-yellow: #F9BB27;
+  --text-inverse: #060C24;
 
-  /* 4. Acentos & Cores Gráficas */
-  --accent-cyan: #00F0FF;
-  --accent-cyan-rgb: 0, 240, 255;
-  --accent-magenta: #EC4899;
-  --accent-magenta-rgb: 236, 72, 153;
-  --accent-yellow: #FBBF24;
+  /* 5. Acentos & Cores Gráficas */
+  --accent-cyan: #00D2FF;
+  --accent-cyan-rgb: 0, 210, 255;
+  --accent-magenta: #EF0975;
+  --accent-magenta-rgb: 239, 9, 117;
+  --accent-yellow: #F9BB27;
   --accent-whatsapp: #22C55E;
   --accent-whatsapp-hover: #16A34A;
 
-  /* 5. Tokens de Ícones */
-  --icon-stroke: #00F0FF;
-  --icon-stroke-secondary: #EC4899;
+  /* 6. Tokens de Ícones */
+  --icon-stroke: #00D2FF;
+  --icon-stroke-secondary: #EF0975;
+  --icon-stroke-yellow: #F9BB27;
   --icon-stroke-muted: #94A3B8;
-  --icon-fill: rgba(0, 240, 255, 0.12);
-  --icon-bg: rgba(255, 255, 255, 0.04);
-  --icon-bg-border: rgba(0, 240, 255, 0.25);
-  --icon-bg-hover: rgba(0, 240, 255, 0.18);
+  --icon-fill: rgba(0, 210, 255, 0.12);
+  --icon-bg: rgba(10, 20, 48, 0.9);
+  --icon-bg-border: rgba(0, 210, 255, 0.3);
+  --icon-bg-hover: rgba(0, 210, 255, 0.22);
 
-  /* 6. Efeitos Visuais & Iluminação */
-  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  --shadow-glow-cyan: 0 0 35px -5px rgba(0, 240, 255, 0.25);
-  --shadow-glow-magenta: 0 0 35px -5px rgba(236, 72, 153, 0.25);
+  /* 7. Efeitos Visuais, Gradientes & Iluminação */
+  --gradient-brand-vm: linear-gradient(135deg, #00D2FF 0%, #EF0975 100%);
+  --gradient-cyan: linear-gradient(135deg, #00D2FF 0%, #054EA2 100%);
+  --gradient-magenta: linear-gradient(135deg, #FF2A85 0%, #B80669 100%);
+  --shadow-card: 0 12px 35px -10px rgba(0, 0, 0, 0.6);
+  --shadow-glow-cyan: 0 0 35px -5px rgba(0, 210, 255, 0.35);
+  --shadow-glow-magenta: 0 0 35px -5px rgba(239, 9, 117, 0.35);
+  --shadow-glow-yellow: 0 0 25px -5px rgba(249, 187, 39, 0.35);
   --blur-glass: blur(16px);
   --radius-sm: 8px;
   --radius-md: 14px;
@@ -86,9 +103,9 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   background: 
-    radial-gradient(circle at 15% 15%, rgba(var(--accent-cyan-rgb), 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 85% 35%, rgba(var(--accent-magenta-rgb), 0.07) 0%, transparent 45%),
-    radial-gradient(circle at 50% 80%, rgba(var(--accent-cyan-rgb), 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 12% 15%, rgba(0, 210, 255, 0.12) 0%, transparent 42%),
+    radial-gradient(circle at 88% 30%, rgba(239, 9, 117, 0.10) 0%, transparent 45%),
+    radial-gradient(circle at 50% 75%, rgba(249, 187, 39, 0.06) 0%, transparent 50%),
     var(--bg-canvas);
 }
 
@@ -112,20 +129,20 @@ button, input, select {
 
 .section-hero {
   padding-top: 50px;
-  min-height: 90vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
 }
 
 /* ==========================================================================
-   COMPONENTES: TOPBAR & NAVBAR FIXA
+   COMPONENTES: TOPBAR & NAVBAR (FLUXO NATURAL / NÃO-FIXO)
    ========================================================================== */
 
 .topbar {
   width: 100%;
   background: var(--bg-topbar);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 8px 4vw;
+  padding: 10px 4vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -136,13 +153,13 @@ button, input, select {
 }
 
 .topbar-highlight {
-  color: var(--accent-cyan);
-  font-weight: 600;
+  color: var(--text-accent-yellow);
+  font-weight: 700;
 }
 
 .navbar {
   width: 100%;
-  padding: 16px 4vw;
+  padding: 18px 4vw;
   background: var(--bg-navbar);
   border-bottom: 1px solid var(--border-subtle);
   display: flex;
@@ -155,19 +172,37 @@ button, input, select {
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+  gap: 14px;
 }
 
-.brand-badge {
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
-  color: var(--text-inverse);
-  padding: 4px 10px;
+.brand-logo-img {
+  height: 48px;
+  width: auto;
   border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  filter: drop-shadow(0 4px 12px rgba(0, 210, 255, 0.3));
+}
+
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 1.35rem;
   font-weight: 900;
+  letter-spacing: -0.5px;
+  background: var(--gradient-brand-vm);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--text-accent-yellow);
+  text-transform: uppercase;
 }
 
 .nav-links {
@@ -180,12 +215,12 @@ button, input, select {
 .nav-link {
   color: var(--text-secondary);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: var(--transition-fast);
 }
 
 .nav-link:hover {
-  color: var(--accent-cyan);
+  color: var(--text-accent-cyan);
 }
 
 /* Botões */
@@ -203,15 +238,15 @@ button, input, select {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-cyan), #0099FF);
-  color: var(--text-inverse);
+  background: var(--gradient-cyan);
+  color: #FFFFFF;
   box-shadow: var(--shadow-glow-cyan);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   filter: brightness(1.15);
-  box-shadow: 0 0 45px rgba(var(--accent-cyan-rgb), 0.45);
+  box-shadow: 0 0 45px rgba(var(--accent-cyan-rgb), 0.55);
 }
 
 .btn-whatsapp {
@@ -261,20 +296,20 @@ button, input, select {
   border: 1px solid var(--border-accent-cyan);
   color: var(--text-accent-cyan);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 24px;
 }
 
 .hero-title {
   font-size: 3.4rem;
-  font-weight: 800;
+  font-weight: 900;
   line-height: 1.12;
   letter-spacing: -1.5px;
   margin-bottom: 20px;
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+  background: var(--gradient-brand-vm);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -422,7 +457,7 @@ button, input, select {
   right: -50%;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(var(--accent-cyan-rgb), 0.15) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(var(--accent-cyan-rgb), 0.18) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -434,17 +469,17 @@ button, input, select {
 }
 
 .mockup-pill {
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
-  background: rgba(236, 72, 153, 0.15);
+  background: rgba(239, 9, 117, 0.15);
   border: 1px solid var(--border-accent-magenta);
   color: var(--text-accent-magenta);
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
 .mockup-render-box {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(4, 8, 23, 0.6);
   border: 1px dashed var(--border-card);
   border-radius: var(--radius-md);
   height: 320px;
@@ -461,12 +496,13 @@ button, input, select {
   position: absolute;
   bottom: 16px;
   right: 16px;
-  background: rgba(0, 240, 255, 0.1);
+  background: rgba(0, 210, 255, 0.12);
   border: 1px solid var(--border-accent-cyan);
   padding: 6px 14px;
   border-radius: var(--radius-sm);
   font-size: 0.8rem;
   color: var(--text-accent-cyan);
+  font-weight: 700;
 }
 
 /* ==========================================================================
@@ -532,7 +568,7 @@ button, input, select {
   letter-spacing: 1px;
   color: var(--text-accent-cyan);
   margin-bottom: 8px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .calc-options-grid {
@@ -561,10 +597,10 @@ button, input, select {
 }
 
 .calc-option-btn.active {
-  background: rgba(var(--accent-cyan-rgb), 0.12);
+  background: rgba(var(--accent-cyan-rgb), 0.15);
   border-color: var(--border-accent-cyan);
   color: var(--text-accent-cyan);
-  box-shadow: 0 0 15px rgba(var(--accent-cyan-rgb), 0.2);
+  box-shadow: 0 0 15px rgba(var(--accent-cyan-rgb), 0.25);
 }
 
 .calc-summary-card {
@@ -597,7 +633,7 @@ button, input, select {
 
 .section-title {
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -1px;
   margin-bottom: 16px;
 }
@@ -615,15 +651,16 @@ button, input, select {
   background: var(--bg-surface-glass);
   border: 1px solid var(--border-card);
   color: var(--text-secondary);
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: var(--transition-fast);
 }
 
 .pillar-btn.active {
-  background: linear-gradient(135deg, rgba(var(--accent-cyan-rgb), 0.2), rgba(var(--accent-magenta-rgb), 0.2));
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.25), rgba(239, 9, 117, 0.25));
   border-color: var(--border-accent-cyan);
   color: var(--text-primary);
+  box-shadow: var(--shadow-glow-cyan);
 }
 
 .products-grid {
@@ -654,7 +691,7 @@ button, input, select {
 .product-image-box {
   width: 100%;
   height: 200px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(4, 8, 23, 0.6);
   border: 1px dashed var(--border-subtle);
   border-radius: var(--radius-md);
   margin-bottom: 20px;
