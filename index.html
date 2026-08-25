@@ -366,119 +366,360 @@
       </div>
     </section>
 
-    <!-- 6. VITRINE DE PRODUTOS REAIS (3 PILARES) -->
-    <section id="produtos" class="section-full">
+    <!-- 6. VITRINE & CARROSSEL DE SERVIÇOS E PRODUTOS (3 PILARES INTERATIVOS) -->
+    <section id="produtos" class="section-full services-catalog-section" style="background: var(--bg-canvas);">
       <div class="section-header-center">
+        <div class="hero-tag" style="color: var(--text-accent-cyan); border-color: rgba(0, 132, 209, 0.2); background: rgba(0, 132, 209, 0.06); margin-bottom: 12px;">
+          ⚡ CATÁLOGO EXPRESS • PRODUÇÃO PRÓPRIA
+        </div>
         <h2 class="section-title">Catálogo de Produtos & Serviços</h2>
-        <p style="color: var(--text-secondary);">Conheça nossas soluções corporativas, itens para festas e serviços expressos em Goiânia.</p>
+        <p style="color: var(--text-secondary);">Role e filtre por categoria para encontrar soluções corporativas, itens para festas e serviços de balcão imediato em Goiânia.</p>
       </div>
 
-      <!-- Tabs dos 3 Pilares -->
-      <div class="pillar-tabs">
-        <button class="pillar-btn active" data-target-pillar="todos">Todos os Itens</button>
-        <button class="pillar-btn" data-target-pillar="corporativo">💼 Corporativo & Comercial</button>
-        <button class="pillar-btn" data-target-pillar="eventos">🎉 Festas, Papelaria & Brindes</button>
-        <button class="pillar-btn" data-target-pillar="balcao">⚡ Serviços de Balcão</button>
+      <!-- Tabs de Filtragem dos 3 Pilares -->
+      <div class="pillar-tabs" role="tablist" aria-label="Categorias de Serviços">
+        <button type="button" class="pillar-btn active" data-target-pillar="todos" role="tab" aria-selected="true">
+          <span>Todos os Serviços</span>
+        </button>
+        <button type="button" class="pillar-btn" data-target-pillar="corporativo" role="tab" aria-selected="false">
+          <span>💼 Corporativo & Comercial</span>
+        </button>
+        <button type="button" class="pillar-btn" data-target-pillar="eventos" role="tab" aria-selected="false">
+          <span>🎉 Festas, Papelaria & Brindes</span>
+        </button>
+        <button type="button" class="pillar-btn" data-target-pillar="balcao" role="tab" aria-selected="false">
+          <span>⚡ Balcão & Serviços Rápidos</span>
+        </button>
       </div>
 
-      <!-- Grade de Cards de Produtos -->
-      <div class="products-grid">
-        <!-- Item 1: Cartão de Visita 300g -->
-        <div class="product-card" data-pillar="corporativo">
-          <div class="product-image-box">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-            <span style="font-size: 0.8rem; margin-top: 8px; font-weight: 600;">[ CARTÃO 300G VERNIZ ]</span>
+      <!-- Carrossel de Serviços & Produtos -->
+      <div class="product-carousel-wrapper">
+        <div class="product-carousel-track-container">
+          <!-- Trilho do Carrossel de Serviços -->
+          <div class="product-carousel-track" role="region" aria-label="Lista de Serviços e Produtos">
+            
+            <!-- [CORPORATIVO] 1. Cartões de Visita 300g -->
+            <div class="product-carousel-card" data-pillar="corporativo">
+              <div class="product-carousel-card-img-wrap">
+                <span class="product-carousel-badge badge-cyan">MAIS VENDIDO</span>
+                <img src="/assets/images/caneca/caneca-3-alca-colorida.jpg" alt="Cartões de Visita 300g Verniz Localizado" loading="lazy" decoding="async">
+              </div>
+              <div class="product-carousel-body">
+                <div>
+                  <div class="product-carousel-meta">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>48h a 72h úteis</span>
+                  </div>
+                  <h3 class="product-carousel-card-title">Cartões de Visita 300g Verniz Localizado</h3>
+                  <p class="product-carousel-card-qty">Laminação fosca aveludada e cantos retos/arredondados</p>
+                </div>
+                <div class="product-carousel-card-footer">
+                  <div class="product-carousel-price-wrap">
+                    <span class="product-carousel-price-current">R$ 0,09 <small style="font-size: 0.7rem; font-weight: normal; color: var(--text-muted);">/un</small></span>
+                    <span class="product-carousel-price-old">Cento R$ 110,00</span>
+                  </div>
+                  <a href="#simulador" class="product-carousel-btn-buy">
+                    <span>SIMULAR</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- [EVENTOS] 2. Caneca de Porcelana 325ml -->
+            <div class="product-carousel-card is-featured" data-pillar="eventos" style="border: 1.5px solid var(--brand-magenta);">
+              <div class="product-carousel-card-img-wrap">
+                <span class="product-carousel-badge badge-magenta">DESTAQUE</span>
+                <img src="/assets/images/caneca/caneca-1-branca-classica.jpg" alt="Caneca de Porcelana 325ml Personalizada" loading="lazy" decoding="async">
+              </div>
+              <div class="product-carousel-body">
+                <div>
+                  <div class="product-carousel-meta">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Pronto em 24h</span>
+                  </div>
+                  <h3 class="product-carousel-card-title">Caneca de Cerâmica 325ml Personalizada</h3>
+                  <p class="product-carousel-card-qty">Resina AAA com 5 opções de cores e modelos</p>
+                </div>
+                <div class="product-carousel-card-footer">
+                  <div class="product-carousel-price-wrap">
+                    <span class="product-carousel-price-current">R$ 19,90 <small style="font-size: 0.7rem; font-weight: normal; color: var(--text-muted);">/un</small></span>
+                    <span class="product-carousel-price-old">R$ 35,00</span>
+                  </div>
+                  <a href="/produto-caneca.html" class="product-carousel-btn-buy" style="background: var(--gradient-brand-vm);">
+                    <span>CONFIGURAR</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- [EVENTOS] 3. Caneca Mágica Termossensível -->
+            <div class="product-carousel-card" data-pillar="eventos">
+              <div class="product-carousel-card-img-wrap">
+                <span class="product-carousel-badge">SURPRESA</span>
+                <img src="/assets/images/caneca/caneca-2-magica.jpg" alt="Caneca Mágica Termossensível" loading="lazy" decoding="async">
+              </div>
+              <div class="product-carousel-body">
+                <div>
+                  <div class="product-carousel-meta">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Pronto em 24h</span>
+                  </div>
+                  <h3 class="product-carousel-card-title">Caneca Mágica Termossensível Fosca</h3>
+                  <p class="product-carousel-card-qty">Revela arte com calor do café/chá</p>
+                </div>
+                <div class="product-carousel-card-footer">
+                  <div class="product-carousel-price-wrap">
+                    <span class="product-carousel-price-current">R$ 29,90</span>
+                    <span class="product-carousel-price-old">R$ 42,00</span>
+                  </div>
+                  <a href="/produto-caneca.html" class="product-carousel-btn-buy">
+                    <span>PEDIR</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- [EVENTOS] 4. Copos & Taças DTF UV -->
+            <div class="product-carousel-card" data-pillar="eventos">
+              <div class="product-carousel-card-img-wrap">
+                <span class="product-carousel-badge badge-magenta">ALTO RELEVO</span>
+                <img src="/assets/images/caneca/caneca-4-alca-vermelha.jpg" alt="Copos e Taças em DTF UV" loading="lazy" decoding="async">
+              </div>
+              <div class="product-carousel-body">
+                <div>
+                  <div class="product-carousel-meta">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>24h a 48h úteis</span>
+                  </div>
+                  <h3 class="product-carousel-card-title">Copos & Taças em DTF UV Relevo</h3>
+                  <p class="product-carousel-card-qty">Verniz tátil ultra-aderente e impermeável</p>
+                </div>
+                <div class="product-carousel-card-footer">
+                  <div class="product-carousel-price-wrap">
+                    <span class="product-carousel-price-current">R$ 3,50 <small style="font-size: 0.7rem; font-weight: normal; color: var(--text-muted);">/un</small></span>
+                    <span class="product-carousel-price-old">R$ 5,00</span>
+                  </div>
+                  <a href="https://wa.me/5562993725371?text=Olá,%20quero%20um%20orçamento%20de%20Copos%20DTF%20UV!" target="_blank" class="product-carousel-btn-buy">
+                    <span>PEDIR</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- [EVENTOS] 5. Agendas 2026 & Planners -->
+            <div class="product-carousel-card" data-pillar="eventos">
+              <div class="product-carousel-card-img-wrap">
+                <span class="product-carousel-badge">COLEÇÃO 2026</span>
+                <img src="/assets/images/caneca/caneca-5-caixa-presente.jpg" alt="Agenda 2026 Personalizada" loading="lazy" decoding="async">
+              </div>
+              <div class="product-carousel-body">
+                <div>
+                  <div class="product-carousel-meta">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Pronto em 48h</span>
+                  </div>
+                  <h3 class="product-carousel-card-title">Agendas 2026 & Planners Executivos</h3>
+                  <p class="product-carousel-card-qty">Capa dura laminada e miolo comercial</p>
+                </div>
+                <div class="product-carousel-card-footer">
+                  <div class="product-carousel-price-wrap">
+                    <span class="product-carousel-price-current">R$ 49,90</span>
+                    <span class="product-carousel-price-old">R$ 65,00</span>
+                  </div>
+                  <a href="https://wa.me/5562993725371?text=Olá,%20gostaria%20de%20ver%20os%20modelos%20de%20Agendas%202026!" target="_blank" class="product-carousel-btn-buy">
+                    <span>PEDIR</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- [EVENTOS] 6. Topo de Bolo 3D & Festas -->
+            <div class="product-carousel-card" data-pillar="eventos">
+              <div class="product-carousel-card-img-wrap">
+                <span class="product-carousel-badge badge-magenta">FESTAS</span>
+                <img src="/assets/images/caneca/caneca-1-branca-classica.jpg" alt="Topo de Bolo 3D" loading="lazy" decoding="async">
+              </div>
+              <div class="product-carousel-body">
+                <div>
+                  <div class="product-carousel-meta">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Entrega em 24h</span>
+                  </div>
+                  <h3 class="product-carousel-card-title">Topos de Bolo 3D & Caixas Milk</h3>
+                  <p class="product-carousel-card-qty">Camadas em lamicote dourado e corte eletrônico</p>
+                </div>
+                <div class="product-carousel-card-footer">
+                  <div class="product-carousel-price-wrap">
+                    <span class="product-carousel-price-current">R$ 30,00</span>
+                    <span class="product-carousel-price-old">Kit Completo</span>
+                  </div>
+                  <a href="https://wa.me/5562993725371?text=Olá,%20quero%20encomendar%20um%20topo%20de%20bolo%20personalizado!" target="_blank" class="product-carousel-btn-buy">
+                    <span>PEDIR</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- [CORPORATIVO] 7. Blocos & Comandas Comerciais -->
+            <div class="product-carousel-card" data-pillar="corporativo">
+              <div class="product-carousel-card-img-wrap">
+                <span class="product-carousel-badge badge-cyan">COMERCIAL</span>
+                <img src="/assets/images/caneca/caneca-3-alca-colorida.jpg" alt="Blocos e Comandas Comerciais" loading="lazy" decoding="async">
+              </div>
+              <div class="product-carousel-body">
+                <div>
+                  <div class="product-carousel-meta">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>48h úteis</span>
+                  </div>
+                  <h3 class="product-carousel-card-title">Blocos & Comandas (2 e 3 Vias)</h3>
+                  <p class="product-carousel-card-qty">Papel autocopiativo com picote e numeração</p>
+                </div>
+                <div class="product-carousel-card-footer">
+                  <div class="product-carousel-price-wrap">
+                    <span class="product-carousel-price-current">R$ 12,00 <small style="font-size: 0.7rem; font-weight: normal; color: var(--text-muted);">/bloco</small></span>
+                    <span class="product-carousel-price-old">R$ 18,00</span>
+                  </div>
+                  <a href="#simulador" class="product-carousel-btn-buy">
+                    <span>SIMULAR</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- [CORPORATIVO] 8. Panfletos & Folders -->
+            <div class="product-carousel-card" data-pillar="corporativo">
+              <div class="product-carousel-card-img-wrap">
+                <span class="product-carousel-badge badge-cyan">DIVULGAÇÃO</span>
+                <img src="/assets/images/caneca/caneca-5-caixa-presente.jpg" alt="Panfletos e Folders Couchê" loading="lazy" decoding="async">
+              </div>
+              <div class="product-carousel-body">
+                <div>
+                  <div class="product-carousel-meta">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>48h a 72h úteis</span>
+                  </div>
+                  <h3 class="product-carousel-card-title">Panfletos & Folders em Couchê</h3>
+                  <p class="product-carousel-card-qty">Papel couchê 90g e 115g em alta definição</p>
+                </div>
+                <div class="product-carousel-card-footer">
+                  <div class="product-carousel-price-wrap">
+                    <span class="product-carousel-price-current">R$ 90,00</span>
+                    <span class="product-carousel-price-old">Milheiro</span>
+                  </div>
+                  <a href="#simulador" class="product-carousel-btn-buy">
+                    <span>SIMULAR</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- [BALCÃO] 9. Foto 3x4 & Polaroids -->
+            <div class="product-carousel-card" data-pillar="balcao">
+              <div class="product-carousel-card-img-wrap">
+                <span class="product-carousel-badge">NA HORA</span>
+                <img src="/assets/images/caneca/caneca-1-branca-classica.jpg" alt="Fotos 3x4 e Polaroid" loading="lazy" decoding="async">
+              </div>
+              <div class="product-carousel-body">
+                <div>
+                  <div class="product-carousel-meta">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Pronto em 10 minutos</span>
+                  </div>
+                  <h3 class="product-carousel-card-title">Foto 3x4 Oficial & Polaroids com Ímã</h3>
+                  <p class="product-carousel-card-qty">Impressão em papel fotográfico profissional</p>
+                </div>
+                <div class="product-carousel-card-footer">
+                  <div class="product-carousel-price-wrap">
+                    <span class="product-carousel-price-current">R$ 10,00</span>
+                    <span class="product-carousel-price-old">Balcão</span>
+                  </div>
+                  <a href="https://wa.me/5562993725371?text=Olá,%20preciso%20de%20fotos%203x4%20ou%20polaroids!" target="_blank" class="product-carousel-btn-buy">
+                    <span>PEDIR</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- [BALCÃO] 10. Plastificação & Crachás PVC -->
+            <div class="product-carousel-card" data-pillar="balcao">
+              <div class="product-carousel-card-img-wrap">
+                <span class="product-carousel-badge">BALCÃO</span>
+                <img src="/assets/images/caneca/caneca-2-magica.jpg" alt="Plastificação e Crachás em PVC" loading="lazy" decoding="async">
+              </div>
+              <div class="product-carousel-body">
+                <div>
+                  <div class="product-carousel-meta">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Execução Imediata</span>
+                  </div>
+                  <h3 class="product-carousel-card-title">Plastificação & Crachás em PVC</h3>
+                  <p class="product-carousel-card-qty">Proteção térmica para documentos e identificação</p>
+                </div>
+                <div class="product-carousel-card-footer">
+                  <div class="product-carousel-price-wrap">
+                    <span class="product-carousel-price-current">A partir R$ 5,00</span>
+                    <span class="product-carousel-price-old">Na Hora</span>
+                  </div>
+                  <a href="https://wa.me/5562993725371?text=Olá,%20preciso%20de%20plastificação%20ou%20crachás!" target="_blank" class="product-carousel-btn-buy">
+                    <span>PEDIR</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- [BALCÃO] 11. Adesivos Vinil & DTF UV Metro -->
+            <div class="product-carousel-card" data-pillar="balcao">
+              <div class="product-carousel-card-img-wrap">
+                <span class="product-carousel-badge">IMPERMEÁVEL</span>
+                <img src="/assets/images/caneca/caneca-4-alca-vermelha.jpg" alt="Adesivos em Vinil e DTF UV" loading="lazy" decoding="async">
+              </div>
+              <div class="product-carousel-body">
+                <div>
+                  <div class="product-carousel-meta">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>24h a 48h úteis</span>
+                  </div>
+                  <h3 class="product-carousel-card-title">Adesivos em Vinil & DTF UV Recortados</h3>
+                  <p class="product-carousel-card-qty">Rótulos para potes, garrafas e meio-corte sob medida</p>
+                </div>
+                <div class="product-carousel-card-footer">
+                  <div class="product-carousel-price-wrap">
+                    <span class="product-carousel-price-current">R$ 25,00 <small style="font-size: 0.7rem; font-weight: normal; color: var(--text-muted);">/m²</small></span>
+                    <span class="product-carousel-price-old">Sob Demanda</span>
+                  </div>
+                  <a href="https://wa.me/5562993725371?text=Olá,%20gostaria%20de%20encomendar%20adesivos%20em%20vinil!" target="_blank" class="product-carousel-btn-buy">
+                    <span>PEDIR</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div>
-            <div style="font-size: 0.8rem; color: var(--text-accent-cyan); font-weight: 800; margin-bottom: 4px;">CORPORATIVO</div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Cartões de Visita 300g</h3>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">Acabamento fosco aveludado com verniz localizado brilhante no logo.</p>
-          </div>
-          <a href="#simulador" class="btn btn-glass" style="width: 100%;">Simular a partir de R$ 0,09</a>
         </div>
 
-        <!-- Item Destaque: Caneca de Porcelana Personalizada -->
-        <div class="product-card is-featured" data-pillar="eventos" style="border: 1.5px solid var(--brand-magenta); box-shadow: 0 8px 24px -4px rgba(230, 0, 103, 0.15);">
-          <div class="product-image-box" style="padding: 0; overflow: hidden; background: #FFFFFF; position: relative;">
-            <img src="/assets/images/caneca/caneca-1-branca-classica.jpg" alt="Caneca de Cerâmica Personalizada 325ml" style="width: 100%; height: 180px; object-fit: cover;">
-            <span style="position: absolute; top: 10px; left: 10px; background: rgba(11, 19, 43, 0.85); color: #FFFFFF; font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: var(--radius-full); backdrop-filter: var(--blur-glass);">✨ 5 FOTOS & CORES</span>
-          </div>
-          <div>
-            <div style="font-size: 0.8rem; color: var(--text-accent-magenta); font-weight: 800; margin-bottom: 4px;">PRESENTES & CORPORATIVO</div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Caneca de Porcelana 325ml</h3>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">Cerâmica resinada AAA. Modelos tradicional, mágico e alça colorida com alta definição.</p>
-          </div>
-          <a href="/produto-caneca.html" class="btn btn-primary" style="width: 100%; font-weight: 800; background: var(--gradient-brand-vm);">Ver Fotos & Personalizar &rarr;</a>
-        </div>
+        <!-- Controles Inferiores no Espaço em Branco (Setas + Indicadores de Pontos Monocromáticos) -->
+        <div class="carousel-bottom-pagination">
+          <button type="button" class="carousel-pagination-arrow carousel-arrow-prev" aria-label="Rolar serviços para a esquerda">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
 
-        <!-- Item 2: Copos & Brindes DTF UV -->
-        <div class="product-card" data-pillar="eventos">
-          <div class="product-image-box">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-magenta)" stroke-width="1.5"><path d="M18 2h-12l2 18h8l2-18z"/><line x1="6" y1="6" x2="18" y2="6"/></svg>
-            <span style="font-size: 0.8rem; margin-top: 8px; font-weight: 600;">[ COPO DTF UV RELEVO ]</span>
-          </div>
-          <div>
-            <div style="font-size: 0.8rem; color: var(--text-accent-magenta); font-weight: 800; margin-bottom: 4px;">FESTAS & BRINDES</div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Copos & Taças em DTF UV</h3>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">Impressão ultravioleta com verniz em alto relevo durável e impermeável.</p>
-          </div>
-          <a href="#simulador" class="btn btn-glass" style="width: 100%;">Simular a partir de R$ 3,50</a>
-        </div>
+          <div class="carousel-dots-list" role="tablist" aria-label="Indicadores de navegação do catálogo"></div>
 
-        <!-- Item 3: Agendas 2026 & Cadernos -->
-        <div class="product-card" data-pillar="eventos">
-          <div class="product-image-box">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-magenta)" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-            <span style="font-size: 0.8rem; margin-top: 8px; font-weight: 600;">[ AGENDAS & CADERNOS ]</span>
-          </div>
-          <div>
-            <div style="font-size: 0.8rem; color: var(--text-accent-magenta); font-weight: 800; margin-bottom: 4px;">PAPELARIA PERSONALIZADA</div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Agendas 2026 & Planners</h3>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">Coleção Love Amor, Medicina e cadernos de agendamento personalizados.</p>
-          </div>
-          <a href="https://wa.me/5562993725371?text=Olá,%20gostaria%20de%20ver%20os%20modelos%20de%20Agendas%202026!" target="_blank" class="btn btn-glass" style="width: 100%;">Ver Modelos no WhatsApp</a>
-        </div>
-
-        <!-- Item 4: Topo de Bolo & Lembrancinhas -->
-        <div class="product-card" data-pillar="eventos">
-          <div class="product-image-box">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-magenta)" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <span style="font-size: 0.8rem; margin-top: 8px; font-weight: 600;">[ TOPO DE BOLO 3D ]</span>
-          </div>
-          <div>
-            <div style="font-size: 0.8rem; color: var(--text-accent-magenta); font-weight: 800; margin-bottom: 4px;">FESTAS & ANIVERSÁRIO</div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Topos de Bolo & Caixas Milk</h3>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">Camadas 3D com corte de precisão, livros de colorir e sacolas personalizadas.</p>
-          </div>
-          <a href="https://wa.me/5562993725371?text=Olá,%20quero%20encomendar%20um%20topo%20de%20bolo%20personalizado!" target="_blank" class="btn btn-glass" style="width: 100%;">A partir de R$ 30,00</a>
-        </div>
-
-        <!-- Item 5: Blocos e Comandas -->
-        <div class="product-card" data-pillar="corporativo">
-          <div class="product-image-box">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            <span style="font-size: 0.8rem; margin-top: 8px; font-weight: 600;">[ BLOCO DE PEDIDOS ]</span>
-          </div>
-          <div>
-            <div style="font-size: 0.8rem; color: var(--text-accent-cyan); font-weight: 800; margin-bottom: 4px;">COMERCIAL</div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Blocos & Comandas (2/3 Vias)</h3>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">Papel autocopiativo com picote e numeração sequencial para controle.</p>
-          </div>
-          <a href="#simulador" class="btn btn-glass" style="width: 100%;">Simular a partir de R$ 12,00</a>
-        </div>
-
-        <!-- Item 6: Fotos 3x4 e Polaroid com Ímã -->
-        <div class="product-card" data-pillar="balcao">
-          <div class="product-image-box">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-yellow)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span style="font-size: 0.8rem; margin-top: 8px; font-weight: 600;">[ FOTOS 3X4 & POLAROID ]</span>
-          </div>
-          <div>
-            <div style="font-size: 0.8rem; color: var(--text-accent-yellow); font-weight: 800; margin-bottom: 4px;">BALCÃO RÁPIDO</div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Foto 3x4 & Polaroid com Ímã</h3>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">Impressão fotográfica para documentos oficiais na hora e polaroids magnéticas.</p>
-          </div>
-          <a href="https://wa.me/5562993725371?text=Olá,%20preciso%20de%20fotos%203x4%20ou%20polaroid!" target="_blank" class="btn btn-glass" style="width: 100%;">Pedir pelo WhatsApp</a>
+          <button type="button" class="carousel-pagination-arrow carousel-arrow-next" aria-label="Rolar serviços para a direita">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -548,41 +789,198 @@
       </div>
     </section>
 
-    <!-- 9. FAQ ESTRUTURADO -->
+    <!-- 9. FAQ ESTRUTURADO (CHAT ACCORDION INTERATIVO) -->
     <section id="faq" class="section-full" style="background: var(--bg-canvas-subtle);">
       <div class="section-header-center">
         <h2 class="section-title">Perguntas Frequentes</h2>
         <p style="color: var(--text-secondary);">Tire suas dúvidas sobre criação de arte, prazos e entregas em Goiânia.</p>
       </div>
 
-      <div class="faq-list">
-        <div class="faq-item open">
-          <div class="faq-question">
-            <span>Eu não tenho arte pronta, a VM Gráfica cria para mim?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="faq-answer">
-            Sim! Nossa equipe interna desenvolve a arte do seu cartão, panfleto, topo de bolo ou brinde. Enviamos a prévia digital para você aprovar antes de qualquer impressão.
-          </div>
+      <div class="faq-chat-container">
+        <div class="faq-chat-timestamp">
+          <span class="faq-chat-status-dot" aria-hidden="true"></span>
+          <span>Atendimento VM Gráfica • Respondemos em minutos</span>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Qual o endereço e horário de atendimento?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="faq-answer">
-            Estamos localizados na Rua CP, 05 - Qd 09 LT 18 - Conjunto Primavera, Goiânia - GO (CEP 74477-258). Atendemos de Segunda a Sexta das 08h às 18h e aos Sábados das 08h às 12h.
-          </div>
-        </div>
+        <div class="faq-chat-list" role="presentation">
+          <!-- Item 1: Criação de Arte -->
+          <div class="faq-chat-card is-open" data-id="1">
+            <button 
+              type="button" 
+              class="faq-chat-trigger" 
+              aria-expanded="true"
+              aria-controls="faq-answer-1"
+              id="faq-trigger-1"
+            >
+              <div class="faq-chat-user-bubble active">
+                <span class="faq-chat-sticker sticker-left" aria-hidden="true">🎨</span>
+                <span class="faq-chat-question-text">Eu não tenho arte pronta, a VM Gráfica cria para mim?</span>
+              </div>
 
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Quais as formas de pagamento aceitas?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              <div class="faq-chat-toggle-btn" aria-hidden="true">
+                <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </button>
+
+            <div class="faq-chat-collapse" id="faq-answer-1" role="region" aria-labelledby="faq-trigger-1">
+              <div class="faq-chat-answer-thread">
+                <div class="faq-chat-assistant-bubble">
+                  <div class="faq-chat-answer-content">
+                    <p><strong>Sim, com certeza!</strong> Nossa equipe interna desenvolve a arte do seu cartão, panfleto, topo de bolo, caneca ou brinde corporativo. Enviamos a prévia digital para você aprovar antes de qualquer impressão física.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="faq-answer">
-            Aceitamos PIX, cartões de crédito e débito. Oferecemos opção de retirada em nosso balcão ou envio para toda a região metropolitana de Goiânia.
+
+          <!-- Item 2: Endereço & Horários -->
+          <div class="faq-chat-card" data-id="2">
+            <button 
+              type="button" 
+              class="faq-chat-trigger" 
+              aria-expanded="false"
+              aria-controls="faq-answer-2"
+              id="faq-trigger-2"
+            >
+              <div class="faq-chat-user-bubble">
+                <span class="faq-chat-sticker sticker-right" aria-hidden="true">📍</span>
+                <span class="faq-chat-question-text">Qual o endereço e horário de atendimento?</span>
+              </div>
+
+              <div class="faq-chat-toggle-btn" aria-hidden="true">
+                <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </button>
+
+            <div class="faq-chat-collapse" id="faq-answer-2" role="region" aria-labelledby="faq-trigger-2">
+              <div class="faq-chat-answer-thread">
+                <div class="faq-chat-assistant-bubble">
+                  <div class="faq-chat-answer-content">
+                    <p>Estamos localizados na <strong>Rua CP, 05 - Qd 09 LT 18 - Conjunto Primavera, Goiânia - GO (CEP 74477-258)</strong>. Atendemos de Segunda a Sexta das <strong>08h às 18h</strong> e aos Sábados das <strong>08h às 12h</strong>.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Formas de Pagamento -->
+          <div class="faq-chat-card" data-id="3">
+            <button 
+              type="button" 
+              class="faq-chat-trigger" 
+              aria-expanded="false"
+              aria-controls="faq-answer-3"
+              id="faq-trigger-3"
+            >
+              <div class="faq-chat-user-bubble">
+                <span class="faq-chat-sticker sticker-left" aria-hidden="true">💳</span>
+                <span class="faq-chat-question-text">Quais as formas de pagamento aceitas?</span>
+              </div>
+
+              <div class="faq-chat-toggle-btn" aria-hidden="true">
+                <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </button>
+
+            <div class="faq-chat-collapse" id="faq-answer-3" role="region" aria-labelledby="faq-trigger-3">
+              <div class="faq-chat-answer-thread">
+                <div class="faq-chat-assistant-bubble">
+                  <div class="faq-chat-answer-content">
+                    <p>Aceitamos <strong>PIX, cartões de crédito e débito</strong>. Oferecemos opção de retirada rápida em nosso balcão ou envio express via motoboy para toda Goiânia e região metropolitana.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Prazos de Produção -->
+          <div class="faq-chat-card" data-id="4">
+            <button 
+              type="button" 
+              class="faq-chat-trigger" 
+              aria-expanded="false"
+              aria-controls="faq-answer-4"
+              id="faq-trigger-4"
+            >
+              <div class="faq-chat-user-bubble">
+                <span class="faq-chat-sticker sticker-right" aria-hidden="true">⚡</span>
+                <span class="faq-chat-question-text">Qual o prazo de produção para personalizados?</span>
+              </div>
+
+              <div class="faq-chat-toggle-btn" aria-hidden="true">
+                <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </button>
+
+            <div class="faq-chat-collapse" id="faq-answer-4" role="region" aria-labelledby="faq-trigger-4">
+              <div class="faq-chat-answer-thread">
+                <div class="faq-chat-assistant-bubble">
+                  <div class="faq-chat-answer-content">
+                    <p>Para canecas, brindes e pedidos de pequenas tiragens, entregamos em <strong>24h a 48h úteis</strong> após aprovação da arte. Para tiragens corporativas ou demandas urgentes no mesmo dia, consulte nossos atendentes no WhatsApp!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5: Tecnologia DTF UV -->
+          <div class="faq-chat-card" data-id="5">
+            <button 
+              type="button" 
+              class="faq-chat-trigger" 
+              aria-expanded="false"
+              aria-controls="faq-answer-5"
+              id="faq-trigger-5"
+            >
+              <div class="faq-chat-user-bubble">
+                <span class="faq-chat-sticker sticker-left" aria-hidden="true">✨</span>
+                <span class="faq-chat-question-text">Como funciona a personalização em DTF UV?</span>
+              </div>
+
+              <div class="faq-chat-toggle-btn" aria-hidden="true">
+                <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </button>
+
+            <div class="faq-chat-collapse" id="faq-answer-5" role="region" aria-labelledby="faq-trigger-5">
+              <div class="faq-chat-answer-thread">
+                <div class="faq-chat-assistant-bubble">
+                  <div class="faq-chat-answer-content">
+                    <p>O <strong>DTF UV</strong> é a mais avançada tecnologia para brindes: aplica relevo com acabamento de verniz diretamente em copos, acrílicos, vidros e metais, com alta aderência, cores vibrantes e sem exigência de tiragem mínima.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

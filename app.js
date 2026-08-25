@@ -1,4 +1,8 @@
 import './components/footer.js';
+import './components/faq-accordion.js';
+import { setupFaqChatInteractions } from './components/faq-accordion.js';
+import './components/product-carousel.js';
+import { setupProductCarousels } from './components/product-carousel.js';
 
 /**
  * VM GRÁFICA RÁPIDA - JAVASCRIPT MASTER
@@ -23,10 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Morphing WhatsApp Button (Padrão Mendes Fotografia)
+  // 2. FAQ Chat Accordion
+  setupFaqChatInteractions();
+
+  // 3. Product Carousel Express
+  setupProductCarousels();
+
+  // 4. Morphing WhatsApp Button (Padrão Mendes Fotografia)
   setupHeroCtaMorph();
 
-  // 3. Galeria e Configurador da Caneca (se estiver na página de produto)
+  // 5. Galeria e Configurador da Caneca (se estiver na página de produto)
   setupProductCaneca();
 });
 

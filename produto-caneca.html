@@ -422,54 +422,165 @@
     </div>
   </section>
 
-  <!-- 7. DÚVIDAS FREQUENTES (FAQ) -->
+  <!-- 7. DÚVIDAS FREQUENTES (FAQ CHAT ACCORDION) -->
   <section class="section-full faq-zone">
     <div class="faq-inner-wrap">
       <div class="section-header-center">
         <h2 class="section-title">Perguntas Frequentes sobre Canecas</h2>
-        <p style="color: var(--text-secondary);">Tire suas dúvidas antes de fazer o pedido.</p>
+        <p style="color: var(--text-secondary);">Tire suas dúvidas sobre criação de arte, durabilidade e prazos em Goiânia.</p>
       </div>
 
-      <div class="faq-accordion-list">
-        <details class="faq-accordion-item" open>
-          <summary class="faq-accordion-header">
-            <span>Vocês montam a arte da caneca se eu não tiver pronta?</span>
-            <span class="faq-chevron">▾</span>
-          </summary>
-          <div class="faq-accordion-body">
-            <p>Sim! Você pode nos enviar sua foto, logotipo da empresa ou a frase que deseja pelo WhatsApp. Nós montamos o layout digital e enviamos a prévia para sua aprovação antes de iniciar a impressão física.</p>
-          </div>
-        </details>
+      <div class="faq-chat-container">
+        <div class="faq-chat-timestamp">
+          <span class="faq-chat-status-dot" aria-hidden="true"></span>
+          <span>Especialistas em Cerâmica & Sublimação • Atendimento Online</span>
+        </div>
 
-        <details class="faq-accordion-item">
-          <summary class="faq-accordion-header">
-            <span>A estampa da caneca sai na água ou descasca com o tempo?</span>
-            <span class="faq-chevron">▾</span>
-          </summary>
-          <div class="faq-accordion-body">
-            <p>Não. Utilizamos resina de classe AAA e tecnologia de termotransferência sublimática a 200°C. As moléculas de tinta fundem-se à cerâmica, garantindo brilho permanente, sem relevo plástico e sem descascar.</p>
-          </div>
-        </details>
+        <div class="faq-chat-list" role="presentation">
+          <!-- Item 1: Montagem de Arte -->
+          <div class="faq-chat-card is-open" data-id="caneca-1">
+            <button 
+              type="button" 
+              class="faq-chat-trigger" 
+              aria-expanded="true"
+              aria-controls="faq-caneca-answer-1"
+              id="faq-caneca-trigger-1"
+            >
+              <div class="faq-chat-user-bubble active">
+                <span class="faq-chat-sticker sticker-left" aria-hidden="true">🎨</span>
+                <span class="faq-chat-question-text">Vocês montam a arte da caneca se eu não tiver pronta?</span>
+              </div>
 
-        <details class="faq-accordion-item">
-          <summary class="faq-accordion-header">
-            <span>Como funciona a Caneca Mágica?</span>
-            <span class="faq-chevron">▾</span>
-          </summary>
-          <div class="faq-accordion-body">
-            <p>A Caneca Mágica possui um revestimento especial termossensível fosco. Quando está fria, ela fica com aparência preta escura. Ao despejar café, chá ou qualquer líquido quente, o revestimento torna-se transparente e revela a arte personalizada como mágica.</p>
-          </div>
-        </details>
+              <div class="faq-chat-toggle-btn" aria-hidden="true">
+                <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </button>
 
-        <details class="faq-accordion-item">
-          <summary class="faq-accordion-header">
-            <span>Qual o prazo de produção para retirada ou entrega em Goiânia?</span>
-            <span class="faq-chevron">▾</span>
-          </summary>
-          <div class="faq-accordion-body">
-            <p>Para pedidos individuais e pequenas quantidades (1 a 15 unidades), o prazo padrão é de <strong>24h a 48h úteis</strong> após a aprovação da arte. Para tiragens corporativas maiores, consulte nosso atendimento para cronogramas expressos.</p>
+            <div class="faq-chat-collapse" id="faq-caneca-answer-1" role="region" aria-labelledby="faq-caneca-trigger-1">
+              <div class="faq-chat-answer-thread">
+                <div class="faq-chat-assistant-bubble">
+                  <div class="faq-chat-answer-content">
+                    <p><strong>Sim!</strong> Você pode nos enviar sua foto, logotipo da empresa ou frase pelo WhatsApp. Nós montamos a prévia digital em 3D e enviamos para sua aprovação antes de iniciar a prensagem física.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </details>
+
+          <!-- Item 2: Durabilidade da Estampa -->
+          <div class="faq-chat-card" data-id="caneca-2">
+            <button 
+              type="button" 
+              class="faq-chat-trigger" 
+              aria-expanded="false"
+              aria-controls="faq-caneca-answer-2"
+              id="faq-caneca-trigger-2"
+            >
+              <div class="faq-chat-user-bubble">
+                <span class="faq-chat-sticker sticker-right" aria-hidden="true">💎</span>
+                <span class="faq-chat-question-text">A estampa da caneca sai na água ou descasca com o tempo?</span>
+              </div>
+
+              <div class="faq-chat-toggle-btn" aria-hidden="true">
+                <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </button>
+
+            <div class="faq-chat-collapse" id="faq-caneca-answer-2" role="region" aria-labelledby="faq-caneca-trigger-2">
+              <div class="faq-chat-answer-thread">
+                <div class="faq-chat-assistant-bubble">
+                  <div class="faq-chat-answer-content">
+                    <p><strong>Não descasca e não desbota.</strong> Utilizamos cerâmica resinada classe AAA e tecnologia de termotransferência a 200°C. As moléculas de pigmento integram-se à resina vítrea, podendo ser lavada normalmente e usada no micro-ondas.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Caneca Mágica -->
+          <div class="faq-chat-card" data-id="caneca-3">
+            <button 
+              type="button" 
+              class="faq-chat-trigger" 
+              aria-expanded="false"
+              aria-controls="faq-caneca-answer-3"
+              id="faq-caneca-trigger-3"
+            >
+              <div class="faq-chat-user-bubble">
+                <span class="faq-chat-sticker sticker-left" aria-hidden="true">✨</span>
+                <span class="faq-chat-question-text">Como funciona a Caneca Mágica Termossensível?</span>
+              </div>
+
+              <div class="faq-chat-toggle-btn" aria-hidden="true">
+                <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </button>
+
+            <div class="faq-chat-collapse" id="faq-caneca-answer-3" role="region" aria-labelledby="faq-caneca-trigger-3">
+              <div class="faq-chat-answer-thread">
+                <div class="faq-chat-assistant-bubble">
+                  <div class="faq-chat-answer-content">
+                    <p>A Caneca Mágica possui película termocromática fosca. Fria, ela exibe tom preto sóbrio. Ao despejar café, chá ou qualquer líquido quente, o preto torna-se translúcido e revela sua foto ou estampa de forma surpreendente!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Prazo de Produção -->
+          <div class="faq-chat-card" data-id="caneca-4">
+            <button 
+              type="button" 
+              class="faq-chat-trigger" 
+              aria-expanded="false"
+              aria-controls="faq-caneca-answer-4"
+              id="faq-caneca-trigger-4"
+            >
+              <div class="faq-chat-user-bubble">
+                <span class="faq-chat-sticker sticker-right" aria-hidden="true">⚡</span>
+                <span class="faq-chat-question-text">Qual o prazo de produção para retirada ou entrega em Goiânia?</span>
+              </div>
+
+              <div class="faq-chat-toggle-btn" aria-hidden="true">
+                <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </button>
+
+            <div class="faq-chat-collapse" id="faq-caneca-answer-4" role="region" aria-labelledby="faq-caneca-trigger-4">
+              <div class="faq-chat-answer-thread">
+                <div class="faq-chat-assistant-bubble">
+                  <div class="faq-chat-answer-content">
+                    <p>Para pedidos individuais e pequenos lotes (1 a 15 unidades), o prazo é de <strong>24h a 48h úteis</strong> após aprovação do layout. Para pedidos de urgência ou eventos corporativos, fale diretamente com nossa equipe no WhatsApp.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
