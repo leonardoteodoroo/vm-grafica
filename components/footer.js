@@ -31,7 +31,7 @@ export class SiteFooter extends HTMLElement {
           </div>
 
           <!-- Bloco 2: Catálogo (Lado a Lado no Mobile) -->
-          <div class="footer-col">
+          <div class="footer-col footer-col-catalogo">
             <h4 class="footer-col-title">Catálogo</h4>
             <ul class="footer-links">
               <li class="footer-link-item"><a href="/produto-caneca.html">Canecas 325ml</a></li>
@@ -44,7 +44,7 @@ export class SiteFooter extends HTMLElement {
           </div>
 
           <!-- Bloco 3: Acabamentos (Lado a Lado no Mobile) -->
-          <div class="footer-col">
+          <div class="footer-col footer-col-acabamentos">
             <h4 class="footer-col-title">Acabamentos</h4>
             <ul class="footer-links">
               <li class="footer-link-item"><a href="/#acabamentos">DTF UV Relevo</a></li>
@@ -56,7 +56,7 @@ export class SiteFooter extends HTMLElement {
           </div>
 
           <!-- Bloco 4: Ajuda (Lado a Lado no Mobile) -->
-          <div class="footer-col">
+          <div class="footer-col footer-col-ajuda">
             <h4 class="footer-col-title">Ajuda</h4>
             <ul class="footer-links">
               <li class="footer-link-item"><a href="/#faq">Dúvidas Frequentes</a></li>
@@ -67,8 +67,8 @@ export class SiteFooter extends HTMLElement {
             </ul>
           </div>
 
-          <!-- Bloco 5: Atendimento & Localização -->
-          <div class="footer-col footer-contact-col">
+          <!-- Bloco 5: Atendimento & Localização (LADO A LADO COM INSTITUCIONAL NO MOBILE) -->
+          <div class="footer-col footer-contact-col footer-col-atendimento">
             <h4 class="footer-col-title">Atendimento</h4>
             <div class="footer-contact-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -92,8 +92,8 @@ export class SiteFooter extends HTMLElement {
             </div>
           </div>
 
-          <!-- Bloco 6: Institucional (Novo Menu Solicitado) -->
-          <div class="footer-col">
+          <!-- Bloco 6: Institucional (LADO A LADO COM ATENDIMENTO NO MOBILE) -->
+          <div class="footer-col footer-col-institucional">
             <h4 class="footer-col-title">Institucional</h4>
             <ul class="footer-links">
               <li class="footer-link-item"><a href="/institucional.html#entregas">Prazos & Envios</a></li>
