@@ -1,383 +1,292 @@
-// ==========================================================================
-// APLICAÇÃO & SIMULADOR DE PREÇO EM TEMPO REAL - VM GRÁFICA
-// ==========================================================================
+/**
+ * VM Gráfica Rápida & Papelaria Personalizada
+ * Scripts Principais & Interatividade (Home + Página de Produto)
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initCalculator();
-  initCategoryFilter();
-  initFAQ();
-  initWhatsAppMorphing();
+  initHeroMorph();
+  initSimulator();
+  initProductCanecaPage();
 });
 
-// ==========================================================================
-// 1. ANIMAÇÃO DE MORPHING DO BOTÃO DO WHATSAPP (ESTILO MENDES FOTOGRAFIA)
-// ==========================================================================
+/* ==========================================================================
+   1. HERO WHATSAPP MORPHING & DOCKING (HOME PAGE)
+   ========================================================================== */
+function initHeroMorph() {
+  const heroBtn = document.getElementById('hero-whatsapp-btn');
+  const heroSlot = document.getElementById('hero-cta-slot');
+  if (!heroBtn || !heroSlot) return;
 
-function initWhatsAppMorphing() {
-  const heroCtaSlot = document.getElementById('heroCtaSlot');
-  const heroCtaBtn = document.getElementById('heroCtaBtn');
-
-  if (!heroCtaSlot || !heroCtaBtn) return;
-
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
-  const lerp = (start, end, progress) => start + (end - start) * progress;
-
-  let morphMetrics = null;
-  let morphFrame = null;
-
-  function preserveFocusWhile(callback) {
-    const hadFocus = document.activeElement === heroCtaBtn;
-    callback();
-    if (hadFocus) heroCtaBtn.focus({ preventScroll: true });
-  }
-
-  function returnCtaToHero() {
-    if (heroCtaBtn.parentElement === heroCtaSlot && !heroCtaBtn.classList.contains('is-morphing')) return;
-
-    preserveFocusWhile(() => {
-      heroCtaBtn.classList.remove('is-docked', 'is-morphing');
-      heroCtaSlot.appendChild(heroCtaBtn);
-    });
-  }
-
-  function moveCtaToViewport() {
-    if (heroCtaBtn.parentElement === document.body) return;
-    preserveFocusWhile(() => document.body.appendChild(heroCtaBtn));
-  }
-
-  function measureMorph() {
-    preserveFocusWhile(() => {
-      heroCtaBtn.classList.remove('is-docked', 'is-morphing');
-      heroCtaSlot.classList.remove('is-reserved');
-      heroCtaSlot.style.removeProperty('--hero-cta-slot-width');
-      heroCtaSlot.style.removeProperty('--hero-cta-slot-height');
-      heroCtaSlot.appendChild(heroCtaBtn);
-    });
-
-    const sourceRect = heroCtaBtn.getBoundingClientRect();
-    const scrollY = window.scrollY || window.pageYOffset;
-    const sourceDocumentTop = sourceRect.top + scrollY;
-    const startScroll = Math.max(0, sourceDocumentTop - window.innerHeight * 0.62);
-    const travel = clamp(window.innerHeight * 0.48, 300, 440);
-    const targetSize = window.innerWidth <= 768 ? 64 : 60;
-
-    heroCtaSlot.style.setProperty('--hero-cta-slot-width', `${sourceRect.width}px`);
-    heroCtaSlot.style.setProperty('--hero-cta-slot-height', `${sourceRect.height}px`);
-    heroCtaSlot.classList.add('is-reserved');
-
-    moveCtaToViewport();
-    heroCtaBtn.classList.add('is-morphing');
-    heroCtaBtn.style.setProperty('--morph-width', `${targetSize}px`);
-    heroCtaBtn.style.setProperty('--morph-height', `${targetSize}px`);
-    heroCtaBtn.style.setProperty('--morph-x', '0px');
-    heroCtaBtn.style.setProperty('--morph-y', '0px');
-    const targetRect = heroCtaBtn.getBoundingClientRect();
-
-    return {
-      sourceLeft: sourceRect.left,
-      sourceTop: sourceDocumentTop - startScroll,
-      sourceWidth: sourceRect.width,
-      sourceHeight: sourceRect.height,
-      targetLeft: targetRect.left,
-      targetTop: targetRect.top,
-      targetRight: targetRect.right,
-      targetBottom: targetRect.bottom,
-      targetSize,
-      startScroll,
-      travel
-    };
-  }
-
-  function applyMorph(progress) {
-    const easedProgress = progress * progress * (3 - 2 * progress);
-    const width = lerp(morphMetrics.sourceWidth, morphMetrics.targetSize, easedProgress);
-    const height = lerp(morphMetrics.sourceHeight, morphMetrics.targetSize, easedProgress);
-    const desiredLeft = lerp(morphMetrics.sourceLeft, morphMetrics.targetLeft, easedProgress);
-    const desiredTop = lerp(morphMetrics.sourceTop, morphMetrics.targetTop, easedProgress);
-    const anchoredLeft = morphMetrics.targetRight - width;
-    const anchoredTop = morphMetrics.targetBottom - height;
-    const textOpacity = 1 - clamp((progress - 0.12) / 0.52);
-    const iconOpacity = clamp((progress - 0.38) / 0.4);
-
-    moveCtaToViewport();
-    heroCtaBtn.classList.add('is-morphing');
-    heroCtaBtn.classList.toggle('is-docked', progress >= 0.995);
-    heroCtaBtn.style.setProperty('--morph-width', `${width.toFixed(2)}px`);
-    heroCtaBtn.style.setProperty('--morph-height', `${height.toFixed(2)}px`);
-    heroCtaBtn.style.setProperty('--morph-x', `${(desiredLeft - anchoredLeft).toFixed(2)}px`);
-    heroCtaBtn.style.setProperty('--morph-y', `${(desiredTop - anchoredTop).toFixed(2)}px`);
-    heroCtaBtn.style.setProperty('--morph-text-opacity', textOpacity.toFixed(3));
-    heroCtaBtn.style.setProperty('--morph-icon-opacity', iconOpacity.toFixed(3));
-    heroCtaBtn.style.setProperty('--morph-icon-scale', lerp(0.72, 1, iconOpacity).toFixed(3));
-  }
+  let ticking = false;
 
   function updateMorph() {
-    morphFrame = null;
-    if (!morphMetrics) morphMetrics = measureMorph();
+    const slotRect = heroSlot.getBoundingClientRect();
+    const scrollY = window.scrollY || window.pageYOffset;
+    const triggerDistance = 250;
 
-    if (reducedMotion.matches) {
-      const sourceHasLeftViewport = heroCtaSlot.getBoundingClientRect().bottom <= 0;
-      if (sourceHasLeftViewport) applyMorph(1);
-      else returnCtaToHero();
-      return;
+    if (scrollY > triggerDistance) {
+      heroBtn.classList.add('is-morphing');
+      heroBtn.classList.add('is-docked');
+      heroSlot.classList.add('is-reserved');
+    } else {
+      heroBtn.classList.remove('is-morphing');
+      heroBtn.classList.remove('is-docked');
+      heroSlot.classList.remove('is-reserved');
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateMorph);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateMorph();
+}
+
+/* ==========================================================================
+   2. SIMULADOR DE PREÇOS (HOME PAGE)
+   ========================================================================== */
+function initSimulator() {
+  const simulatorForm = document.getElementById('price-simulator-form');
+  if (!simulatorForm) return;
+
+  const productSelect = document.getElementById('sim-product');
+  const finishSelect = document.getElementById('sim-finish');
+  const qtySelect = document.getElementById('sim-qty');
+  const totalDisplay = document.getElementById('sim-total-display');
+  const unitDisplay = document.getElementById('sim-unit-display');
+  const whatsappCta = document.getElementById('sim-whatsapp-cta');
+
+  const pricingTable = {
+    cartao: {
+      basePrices: { 100: 45, 250: 75, 500: 110, 1000: 160 },
+      finishMultipliers: { simples: 1, bopp: 1.25, verniz: 1.45, dtf: 1.8 }
+    },
+    panfleto: {
+      basePrices: { 100: 55, 250: 95, 500: 140, 1000: 210 },
+      finishMultipliers: { simples: 1, bopp: 1.2, verniz: 1.35, dtf: 1.5 }
+    },
+    copo: {
+      basePrices: { 10: 80, 25: 160, 50: 280, 100: 490 },
+      finishMultipliers: { simples: 1, bopp: 1.1, verniz: 1.2, dtf: 1.35 }
+    },
+    adesivo: {
+      basePrices: { 50: 35, 100: 55, 250: 95, 500: 150 },
+      finishMultipliers: { simples: 1, bopp: 1.2, verniz: 1.3, dtf: 1.6 }
+    }
+  };
+
+  function calculate() {
+    if (!productSelect || !finishSelect || !qtySelect || !totalDisplay) return;
+
+    const prod = productSelect.value || 'cartao';
+    const finish = finishSelect.value || 'simples';
+    const qty = parseInt(qtySelect.value, 10) || 100;
+
+    const productData = pricingTable[prod] || pricingTable.cartao;
+    const base = productData.basePrices[qty] || (qty * 0.5);
+    const mult = productData.finishMultipliers[finish] || 1;
+
+    const total = base * mult;
+    const unit = total / qty;
+
+    totalDisplay.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    if (unitDisplay) {
+      unitDisplay.textContent = `(R$ ${unit.toFixed(2).replace('.', ',')} / un)`;
     }
 
-    const scrollY = window.scrollY || window.pageYOffset;
-    const progress = clamp((scrollY - morphMetrics.startScroll) / morphMetrics.travel);
-
-    if (progress <= 0) returnCtaToHero();
-    else applyMorph(progress);
+    if (whatsappCta) {
+      const prodText = productSelect.options[productSelect.selectedIndex]?.text || prod;
+      const finishText = finishSelect.options[finishSelect.selectedIndex]?.text || finish;
+      const msg = encodeURIComponent(
+        `Olá VM Gráfica! Gostaria de encomendar pelo simulador:\n- Produto: ${prodText}\n- Acabamento: ${finishText}\n- Quantidade: ${qty} un\n- Valor Estimado: R$ ${total.toFixed(2).replace('.', ',')}`
+      );
+      whatsappCta.href = `https://wa.me/5562993725371?text=${msg}`;
+    }
   }
 
-  function requestMorphUpdate() {
-    if (morphFrame !== null) return;
-    morphFrame = window.requestAnimationFrame(updateMorph);
-  }
-
-  function resetMetrics() {
-    morphMetrics = null;
-    requestMorphUpdate();
-  }
-
-  window.addEventListener('scroll', requestMorphUpdate, { passive: true });
-  window.addEventListener('resize', resetMetrics);
-  window.addEventListener('orientationchange', resetMetrics);
-  requestMorphUpdate();
-}
-
-// ==========================================================================
-// 2. DADOS E LÓGICA DA CALCULADORA INTERATIVA
-// ==========================================================================
-
-const PRICING_DATA = {
-  cartao: {
-    name: "Cartão de Visita",
-    materials: {
-      couche250: { name: "Couchê 250g", basePrice: 0.09 },
-      couche300: { name: "Couchê 300g (Premium)", basePrice: 0.11 },
-      kraft: { name: "Papel Kraft 300g", basePrice: 0.13 }
-    },
-    finishes: {
-      sem_verniz: { name: "Sem Verniz", multiplier: 1.0 },
-      verniz_total: { name: "Verniz Total Frente", multiplier: 1.15 },
-      verniz_local: { name: "Verniz Localizado + Fosco (VIP)", multiplier: 1.45 }
-    },
-    minQty: 100
-  },
-  copo: {
-    name: "Copo Acrílico Personalizado",
-    materials: {
-      long_drink: { name: "Long Drink 350ml", basePrice: 3.50 },
-      twister: { name: "Twister com Tampa 500ml", basePrice: 5.80 },
-      taca_gin: { name: "Taça de Gin Degradê 580ml", basePrice: 7.90 }
-    },
-    finishes: {
-      silk_1cor: { name: "Silk Screen (1 Cor)", multiplier: 1.0 },
-      dtf_uv: { name: "DTF UV Relevo Colorido (Alta Fixação)", multiplier: 1.35 }
-    },
-    minQty: 20
-  },
-  adesivo: {
-    name: "Adesivos & Rótulos",
-    materials: {
-      papel_adesivo: { name: "Papel Couchê Adesivo", basePrice: 0.35 },
-      vinil_brilho: { name: "Vinil Brilho Impermeável", basePrice: 0.65 },
-      vinil_transparente: { name: "Vinil Transparente / DTF", basePrice: 0.85 }
-    },
-    finishes: {
-      corte_reto: { name: "Corte Reto / Quadrado", multiplier: 1.0 },
-      meio_corte: { name: "Meio-Corte Especial (Formato Livre)", multiplier: 1.20 }
-    },
-    minQty: 50
-  },
-  bloco: {
-    name: "Blocos de Pedido e Comandas",
-    materials: {
-      via1: { name: "Sulfite 75g (1 Via)", basePrice: 12.00 },
-      via2_carbonado: { name: "Autocopiativo (2 Vias)", basePrice: 22.00 },
-      via3_carbonado: { name: "Autocopiativo (3 Vias)", basePrice: 32.00 }
-    },
-    finishes: {
-      padrao: { name: "Picote + Numeração Sequencial", multiplier: 1.0 }
-    },
-    minQty: 5
-  }
-};
-
-let currentConfig = {
-  product: 'cartao',
-  material: 'couche300',
-  finish: 'verniz_local',
-  quantity: 1000
-};
-
-function initCalculator() {
-  const productButtons = document.querySelectorAll('[data-product]');
-  const quantityInput = document.getElementById('calc-quantity');
-  const qtyPresets = document.querySelectorAll('[data-qty]');
-
-  // Troca de produto
-  productButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      productButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentConfig.product = btn.dataset.product;
-      updateMaterialOptions();
-      recalculatePrice();
-    });
+  [productSelect, finishSelect, qtySelect].forEach(el => {
+    if (el) el.addEventListener('change', calculate);
   });
 
-  // Troca de quantidade por presets
-  qtyPresets.forEach(btn => {
+  calculate();
+}
+
+/* ==========================================================================
+   3. PÁGINA DE PRODUTO DEDICADA: CANECA PERSONALIZADA (produto-caneca.html)
+   ========================================================================== */
+function initProductCanecaPage() {
+  const mainImg = document.getElementById('main-product-img');
+  const thumbButtons = document.querySelectorAll('.thumb-btn');
+  const modelChips = document.querySelectorAll('.model-chip');
+  const qtyInput = document.getElementById('qty-input');
+  const qtyMinus = document.getElementById('qty-minus');
+  const qtyPlus = document.getElementById('qty-plus');
+  const tierQuickBtns = document.querySelectorAll('.tier-btn');
+  const tierCols = document.querySelectorAll('.tier-col');
+  const summaryUnitPrice = document.getElementById('summary-unit-price');
+  const summaryTotalPrice = document.getElementById('summary-total-price');
+  const summaryItemsCount = document.getElementById('summary-items-count');
+  const stickyTotalPrice = document.getElementById('sticky-total-price');
+  const btnBuyWhatsapp = document.getElementById('btn-buy-whatsapp');
+  const btnStickyWhatsapp = document.getElementById('btn-sticky-whatsapp');
+
+  if (!mainImg || !qtyInput) return;
+
+  // Estado do Produto
+  let currentModel = 'classica';
+  let currentModelName = 'Branca Clássica';
+  let currentExtraPrice = 0;
+  let currentQty = parseInt(qtyInput.value, 10) || 1;
+
+  // 1. Galeria de Fotos Interativa (5 Imagens)
+  thumbButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      qtyPresets.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentConfig.quantity = parseInt(btn.dataset.qty);
-      if (quantityInput) quantityInput.value = currentConfig.quantity;
-      recalculatePrice();
-    });
-  });
+      const newSrc = btn.getAttribute('data-img');
+      const newAlt = btn.getAttribute('data-alt');
 
-  if (quantityInput) {
-    quantityInput.addEventListener('input', (e) => {
-      currentConfig.quantity = Math.max(1, parseInt(e.target.value) || 1);
-      recalculatePrice();
-    });
-  }
+      // Feedback de transição suave
+      mainImg.style.opacity = '0.3';
+      setTimeout(() => {
+        mainImg.src = newSrc;
+        if (newAlt) mainImg.alt = newAlt;
+        mainImg.style.opacity = '1';
+      }, 120);
 
-  updateMaterialOptions();
-  recalculatePrice();
-}
-
-function updateMaterialOptions() {
-  const prodData = PRICING_DATA[currentConfig.product];
-  const materialContainer = document.getElementById('material-options-container');
-  const finishContainer = document.getElementById('finish-options-container');
-
-  if (!prodData) return;
-
-  // Renderiza Materiais
-  const materialKeys = Object.keys(prodData.materials);
-  if (!prodData.materials[currentConfig.material]) {
-    currentConfig.material = materialKeys[0];
-  }
-
-  if (materialContainer) {
-    materialContainer.innerHTML = materialKeys.map(key => {
-      const mat = prodData.materials[key];
-      const isActive = key === currentConfig.material ? 'active' : '';
-      return `<button class="calc-option-btn ${isActive}" onclick="selectMaterial('${key}')">${mat.name}</button>`;
-    }).join('');
-  }
-
-  // Renderiza Acabamentos
-  const finishKeys = Object.keys(prodData.finishes);
-  if (!prodData.finishes[currentConfig.finish]) {
-    currentConfig.finish = finishKeys[0];
-  }
-
-  if (finishContainer) {
-    finishContainer.innerHTML = finishKeys.map(key => {
-      const fin = prodData.finishes[key];
-      const isActive = key === currentConfig.finish ? 'active' : '';
-      return `<button class="calc-option-btn ${isActive}" onclick="selectFinish('${key}')">${fin.name}</button>`;
-    }).join('');
-  }
-}
-
-window.selectMaterial = function(matKey) {
-  currentConfig.material = matKey;
-  updateMaterialOptions();
-  recalculatePrice();
-};
-
-window.selectFinish = function(finKey) {
-  currentConfig.finish = finKey;
-  updateMaterialOptions();
-  recalculatePrice();
-};
-
-function recalculatePrice() {
-  const prodData = PRICING_DATA[currentConfig.product];
-  if (!prodData) return;
-
-  const mat = prodData.materials[currentConfig.material];
-  const fin = prodData.finishes[currentConfig.finish];
-  const qty = currentConfig.quantity;
-
-  const unitBase = mat.basePrice * fin.multiplier;
-  
-  // Desconto progressivo por escala de volume
-  let discount = 1.0;
-  if (qty >= 1000) discount = 0.82;
-  else if (qty >= 500) discount = 0.88;
-  else if (qty >= 250) discount = 0.94;
-
-  const totalPrice = (unitBase * qty * discount);
-  const formattedTotal = totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  const unitPriceFormatted = (totalPrice / qty).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
-  // Atualiza a tela
-  const priceDisplay = document.getElementById('calc-price-total');
-  const unitDisplay = document.getElementById('calc-price-unit');
-  const summaryProd = document.getElementById('calc-summary-product');
-  const summarySpecs = document.getElementById('calc-summary-specs');
-  const whatsappBtn = document.getElementById('calc-btn-whatsapp');
-
-  if (priceDisplay) priceDisplay.innerText = formattedTotal;
-  if (unitDisplay) unitDisplay.innerText = `${unitPriceFormatted} por unidade`;
-  if (summaryProd) summaryProd.innerText = `${qty}x ${prodData.name}`;
-  if (summarySpecs) summarySpecs.innerText = `${mat.name} • ${fin.name}`;
-
-  // Monta link do WhatsApp com mensagem pronta
-  const zapMessage = encodeURIComponent(
-    `Olá, VM Gráfica! Simulei meu pedido no site e quero fechar:\n\n` +
-    `📦 *Produto:* ${prodData.name}\n` +
-    `📄 *Material:* ${mat.name}\n` +
-    `✨ *Acabamento:* ${fin.name}\n` +
-    `🔢 *Quantidade:* ${qty} unidades\n` +
-    `💰 *Valor Estimado:* ${formattedTotal}\n\n` +
-    `Gostaria de enviar minha arte / solicitar a criação!`
-  );
-
-  if (whatsappBtn) {
-    whatsappBtn.href = `https://wa.me/5562993725371?text=${zapMessage}`;
-  }
-}
-
-// ==========================================================================
-// 3. FILTRO DA VITRINE (3 PILARES) & FAQ
-// ==========================================================================
-
-function initCategoryFilter() {
-  const pillarButtons = document.querySelectorAll('.pillar-btn');
-  const productCards = document.querySelectorAll('[data-pillar]');
-
-  pillarButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      pillarButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const selectedPillar = btn.dataset.targetPillar;
-
-      productCards.forEach(card => {
-        if (selectedPillar === 'todos' || card.dataset.pillar === selectedPillar) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+      // Atualizar abas ativas
+      thumbButtons.forEach(b => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected', 'false');
       });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
     });
   });
-}
 
-function initFAQ() {
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      faqItems.forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+  // 2. Seletor de Modelo / Acabamento
+  modelChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      modelChips.forEach(c => {
+        c.classList.remove('is-selected');
+        c.setAttribute('aria-checked', 'false');
+      });
+      chip.classList.add('is-selected');
+      chip.setAttribute('aria-checked', 'true');
+
+      currentModel = chip.getAttribute('data-model');
+      currentModelName = chip.querySelector('.chip-title')?.textContent?.trim() || 'Branca Clássica';
+      currentExtraPrice = parseFloat(chip.getAttribute('data-extra')) || 0;
+
+      // Trocar thumbnail automaticamente para a foto correspondente
+      if (currentModel === 'classica') thumbButtons[0]?.click();
+      if (currentModel === 'magica') thumbButtons[1]?.click();
+      if (currentModel === 'colorida') thumbButtons[2]?.click();
+      if (currentModel === 'presente') thumbButtons[4]?.click();
+
+      updateProductCalculations();
     });
   });
+
+  // 3. Tabela de Preços Base por Quantidade
+  function getBaseUnitPrice(qty) {
+    if (qty >= 50) return 19.90;
+    if (qty >= 15) return 24.90;
+    if (qty >= 5) return 29.90;
+    return 35.00;
+  }
+
+  // 4. Atualização de Cálculos e Mensagens
+  function updateProductCalculations() {
+    currentQty = Math.max(1, Math.min(1000, parseInt(qtyInput.value, 10) || 1));
+    qtyInput.value = currentQty;
+
+    const baseUnit = getBaseUnitPrice(currentQty);
+    const finalUnit = baseUnit + currentExtraPrice;
+    const totalPrice = finalUnit * currentQty;
+
+    // Atualizar UI de Preço
+    if (summaryUnitPrice) {
+      summaryUnitPrice.textContent = `R$ ${finalUnit.toFixed(2).replace('.', ',')} / un`;
+    }
+    if (summaryTotalPrice) {
+      summaryTotalPrice.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+    }
+    if (stickyTotalPrice) {
+      stickyTotalPrice.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+    }
+    if (summaryItemsCount) {
+      summaryItemsCount.textContent = `(${currentQty} ${currentQty === 1 ? 'unidade selecionada' : 'unidades selecionadas'})`;
+    }
+
+    // Atualizar Faixa Ativa na Tabela
+    tierCols.forEach(col => {
+      const min = parseInt(col.getAttribute('data-min'), 10);
+      const max = parseInt(col.getAttribute('data-max'), 10);
+      if (currentQty >= min && currentQty <= max) {
+        col.classList.add('is-current');
+      } else {
+        col.classList.remove('is-current');
+      }
+    });
+
+    // Atualizar Botões Rápidos
+    tierQuickBtns.forEach(btn => {
+      const btnQty = parseInt(btn.getAttribute('data-qty'), 10);
+      if (btnQty === currentQty) {
+        btn.classList.add('is-active');
+      } else {
+        btn.classList.remove('is-active');
+      }
+    });
+
+    // Montar link do WhatsApp
+    const msg = encodeURIComponent(
+      `Olá VM Gráfica! Gostaria de encomendar Canecas Personalizadas:\n` +
+      `• Modelo: ${currentModelName}\n` +
+      `• Quantidade: ${currentQty} un\n` +
+      `• Preço Unitário: R$ ${finalUnit.toFixed(2).replace('.', ',')}\n` +
+      `• Total Estimado: R$ ${totalPrice.toFixed(2).replace('.', ',')}\n\n` +
+      `Gostaria de enviar minha arte/foto para aprovação!`
+    );
+    const waUrl = `https://wa.me/5562993725371?text=${msg}`;
+
+    if (btnBuyWhatsapp) btnBuyWhatsapp.href = waUrl;
+    if (btnStickyWhatsapp) btnStickyWhatsapp.href = waUrl;
+  }
+
+  // Event Listeners de Quantidade
+  if (qtyMinus) {
+    qtyMinus.addEventListener('click', () => {
+      if (currentQty > 1) {
+        qtyInput.value = currentQty - 1;
+        updateProductCalculations();
+      }
+    });
+  }
+
+  if (qtyPlus) {
+    qtyPlus.addEventListener('click', () => {
+      qtyInput.value = currentQty + 1;
+      updateProductCalculations();
+    });
+  }
+
+  qtyInput.addEventListener('input', updateProductCalculations);
+  qtyInput.addEventListener('change', updateProductCalculations);
+
+  tierQuickBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = parseInt(btn.getAttribute('data-qty'), 10);
+      if (q) {
+        qtyInput.value = q;
+        updateProductCalculations();
+      }
+    });
+  });
+
+  // Inicializar cálculo na carga
+  updateProductCalculations();
 }
