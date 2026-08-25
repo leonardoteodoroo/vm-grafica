@@ -2694,3 +2694,145 @@ button, input, select {
     font-size: 0.72rem;
   }
 }
+
+
+/* ==========================================================================
+   NAVBAR NÃO-FIXA & BOTÃO DE MENU 3 TRAÇOS (HAMBURGUER)
+   ========================================================================== */
+
+.navbar {
+  position: relative !important;
+  top: auto !important;
+  width: 100%;
+  padding: 14px 4vw;
+  background: var(--bg-navbar);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-menu-toggle {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.nav-menu-toggle:hover {
+  background: var(--bg-canvas-subtle);
+  border-color: var(--brand-cyan);
+  color: var(--brand-cyan);
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #FFFFFF;
+    border-bottom: 2px solid var(--brand-cyan);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+    padding: 20px 4vw;
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 200;
+  }
+
+  .nav-links.is-open {
+    display: flex !important;
+  }
+}
+
+/* ==========================================================================
+   EFEITO MORPHING DO BOTÃO DE WHATSAPP (PADRÃO MENDES FOTOGRAFIA)
+   ========================================================================== */
+
+.hero-cta-slot {
+  display: inline-flex;
+  min-width: var(--hero-cta-slot-width, auto);
+  min-height: var(--hero-cta-slot-height, auto);
+}
+
+.hero-whatsapp-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--brand-green);
+  color: #FFFFFF;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-float-btn);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.hero-whatsapp-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  fill: currentColor;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.72);
+  pointer-events: none;
+}
+
+.hero-whatsapp-text {
+  white-space: nowrap;
+}
+
+.hero-whatsapp-cta.is-morphing {
+  position: fixed;
+  right: calc(1.5rem + env(safe-area-inset-right));
+  bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  width: var(--morph-width, 60px);
+  height: var(--morph-height, 60px);
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  border-radius: 9999px;
+  z-index: 900;
+  background-color: var(--brand-green);
+  box-shadow: 0 10px 28px rgba(22, 163, 74, 0.45);
+  transform: translate3d(var(--morph-x, 0px), var(--morph-y, 0px), 0);
+  will-change: transform, width, height;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-whatsapp-cta.is-morphing .hero-whatsapp-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: clip;
+  opacity: var(--morph-text-opacity, 0);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hero-whatsapp-cta.is-morphing .hero-whatsapp-icon {
+  width: 30px;
+  height: 30px;
+  opacity: var(--morph-icon-opacity, 1);
+  transform: translate(-50%, -50%) scale(var(--morph-icon-scale, 1));
+}
+
+.hero-whatsapp-cta.is-docked {
+  transform: translate3d(0, 0, 0);
+}

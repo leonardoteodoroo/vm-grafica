@@ -57,7 +57,7 @@ export class SiteFooter extends HTMLElement {
 
           <!-- Bloco 4: Ajuda & Info (Lado a Lado no Mobile) -->
           <div class="footer-col">
-            <h4 class="footer-col-title">Ajuda & Info</h4>
+            <h4 class="footer-col-title">Ajuda</h4>
             <ul class="footer-links">
               <li class="footer-link-item"><a href="/#faq">Dúvidas Frequentes</a></li>
               <li class="footer-link-item"><a href="/#avaliacoes">Avaliações Google</a></li>

@@ -1,134 +1,183 @@
 import './components/footer.js';
 
 /**
- * VM Gráfica Rápida & Papelaria Personalizada
- * Scripts Principais & Interatividade (Home + Página de Produto)
+ * VM GRÁFICA RÁPIDA - JAVASCRIPT MASTER
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initHeroMorph();
-  initSimulator();
-  initProductCanecaPage();
+  // 1. Menu Hambúrguer (3 Traços)
+  const menuToggle = document.getElementById('navMenuToggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navLinks.classList.toggle('is-open');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // 2. Morphing WhatsApp Button (Padrão Mendes Fotografia)
+  setupHeroCtaMorph();
+
+  // 3. Galeria e Configurador da Caneca (se estiver na página de produto)
+  setupProductCaneca();
 });
 
-/* ==========================================================================
-   1. HERO WHATSAPP MORPHING & DOCKING (HOME PAGE)
-   ========================================================================== */
-function initHeroMorph() {
-  const heroBtn = document.getElementById('hero-whatsapp-btn');
-  const heroSlot = document.getElementById('hero-cta-slot');
-  if (!heroBtn || !heroSlot) return;
+/**
+ * Morphing WhatsApp Button: Hero CTA transforma-se no Floating WhatsApp no scroll
+ */
+function setupHeroCtaMorph() {
+  const heroCtaBtn = document.getElementById('heroCtaBtn');
+  const heroCtaSlot = document.getElementById('heroCtaSlot');
+  if (!heroCtaBtn || !heroCtaSlot) return;
 
-  let ticking = false;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let morphMetrics = null;
+  let morphFrame = null;
+  let isDetached = false;
+
+  const clamp = (val, min = 0, max = 1) => Math.min(Math.max(val, min), max);
+  const lerp = (start, end, progress) => start + (end - start) * progress;
+
+  function moveCtaToViewport() {
+    if (isDetached) return;
+    document.body.appendChild(heroCtaBtn);
+    isDetached = true;
+  }
+
+  function returnCtaToHero() {
+    if (!isDetached) return;
+    heroCtaBtn.classList.remove('is-docked', 'is-morphing');
+    heroCtaSlot.classList.remove('is-reserved');
+    heroCtaSlot.style.removeProperty('--hero-cta-slot-width');
+    heroCtaSlot.style.removeProperty('--hero-cta-slot-height');
+    heroCtaBtn.style.removeProperty('--morph-width');
+    heroCtaBtn.style.removeProperty('--morph-height');
+    heroCtaBtn.style.removeProperty('--morph-x');
+    heroCtaBtn.style.removeProperty('--morph-y');
+    heroCtaBtn.style.removeProperty('--morph-text-opacity');
+    heroCtaBtn.style.removeProperty('--morph-icon-opacity');
+    heroCtaBtn.style.removeProperty('--morph-icon-scale');
+    heroCtaSlot.appendChild(heroCtaBtn);
+    isDetached = false;
+  }
+
+  function measureMorph() {
+    if (isDetached) {
+      returnCtaToHero();
+    }
+
+    const sourceRect = heroCtaBtn.getBoundingClientRect();
+    const scrollY = window.scrollY || window.pageYOffset;
+    const sourceDocumentTop = sourceRect.top + scrollY;
+    const startScroll = Math.max(0, sourceDocumentTop - window.innerHeight * 0.62);
+    const travel = clamp(window.innerHeight * 0.48, 300, 440);
+    const targetSize = window.innerWidth <= 768 ? 58 : 56;
+
+    heroCtaSlot.style.setProperty('--hero-cta-slot-width', `${sourceRect.width}px`);
+    heroCtaSlot.style.setProperty('--hero-cta-slot-height', `${sourceRect.height}px`);
+    heroCtaSlot.classList.add('is-reserved');
+
+    moveCtaToViewport();
+    heroCtaBtn.classList.add('is-morphing');
+    heroCtaBtn.style.setProperty('--morph-width', `${targetSize}px`);
+    heroCtaBtn.style.setProperty('--morph-height', `${targetSize}px`);
+    heroCtaBtn.style.setProperty('--morph-x', '0px');
+    heroCtaBtn.style.setProperty('--morph-y', '0px');
+    const targetRect = heroCtaBtn.getBoundingClientRect();
+
+    return {
+      sourceLeft: sourceRect.left,
+      sourceTop: sourceDocumentTop - startScroll,
+      sourceWidth: sourceRect.width,
+      sourceHeight: sourceRect.height,
+      targetLeft: targetRect.left,
+      targetTop: targetRect.top,
+      targetRight: targetRect.right,
+      targetBottom: targetRect.bottom,
+      targetSize,
+      startScroll,
+      travel
+    };
+  }
+
+  function applyMorph(progress) {
+    const easedProgress = progress * progress * (3 - 2 * progress);
+    const width = lerp(morphMetrics.sourceWidth, morphMetrics.targetSize, easedProgress);
+    const height = lerp(morphMetrics.sourceHeight, morphMetrics.targetSize, easedProgress);
+    const desiredLeft = lerp(morphMetrics.sourceLeft, morphMetrics.targetLeft, easedProgress);
+    const desiredTop = lerp(morphMetrics.sourceTop, morphMetrics.targetTop, easedProgress);
+    const anchoredLeft = morphMetrics.targetRight - width;
+    const anchoredTop = morphMetrics.targetBottom - height;
+    const textOpacity = 1 - clamp((progress - 0.12) / 0.52);
+    const iconOpacity = clamp((progress - 0.38) / 0.4);
+
+    moveCtaToViewport();
+    heroCtaBtn.classList.add('is-morphing');
+    heroCtaBtn.classList.toggle('is-docked', progress >= 0.995);
+    heroCtaBtn.style.setProperty('--morph-width', `${width.toFixed(2)}px`);
+    heroCtaBtn.style.setProperty('--morph-height', `${height.toFixed(2)}px`);
+    heroCtaBtn.style.setProperty('--morph-x', `${(desiredLeft - anchoredLeft).toFixed(2)}px`);
+    heroCtaBtn.style.setProperty('--morph-y', `${(desiredTop - anchoredTop).toFixed(2)}px`);
+    heroCtaBtn.style.setProperty('--morph-text-opacity', textOpacity.toFixed(3));
+    heroCtaBtn.style.setProperty('--morph-icon-opacity', iconOpacity.toFixed(3));
+    heroCtaBtn.style.setProperty('--morph-icon-scale', lerp(0.72, 1, iconOpacity).toFixed(3));
+  }
 
   function updateMorph() {
-    const slotRect = heroSlot.getBoundingClientRect();
+    morphFrame = null;
+    if (!morphMetrics) morphMetrics = measureMorph();
+
+    if (reducedMotion.matches) {
+      const sourceHasLeftViewport = heroCtaSlot.getBoundingClientRect().bottom <= 0;
+      if (sourceHasLeftViewport) applyMorph(1);
+      else returnCtaToHero();
+      return;
+    }
+
     const scrollY = window.scrollY || window.pageYOffset;
-    const triggerDistance = 250;
+    const progress = clamp((scrollY - morphMetrics.startScroll) / morphMetrics.travel);
 
-    if (scrollY > triggerDistance) {
-      heroBtn.classList.add('is-morphing');
-      heroBtn.classList.add('is-docked');
-      heroSlot.classList.add('is-reserved');
-    } else {
-      heroBtn.classList.remove('is-morphing');
-      heroBtn.classList.remove('is-docked');
-      heroSlot.classList.remove('is-reserved');
-    }
-    ticking = false;
+    if (progress <= 0) returnCtaToHero();
+    else applyMorph(progress);
   }
 
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(updateMorph);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  updateMorph();
-}
-
-/* ==========================================================================
-   2. SIMULADOR DE PREÇOS (HOME PAGE)
-   ========================================================================== */
-function initSimulator() {
-  const simulatorForm = document.getElementById('price-simulator-form');
-  if (!simulatorForm) return;
-
-  const productSelect = document.getElementById('sim-product');
-  const finishSelect = document.getElementById('sim-finish');
-  const qtySelect = document.getElementById('sim-qty');
-  const totalDisplay = document.getElementById('sim-total-display');
-  const unitDisplay = document.getElementById('sim-unit-display');
-  const whatsappCta = document.getElementById('sim-whatsapp-cta');
-
-  const pricingTable = {
-    cartao: {
-      basePrices: { 100: 45, 250: 75, 500: 110, 1000: 160 },
-      finishMultipliers: { simples: 1, bopp: 1.25, verniz: 1.45, dtf: 1.8 }
-    },
-    panfleto: {
-      basePrices: { 100: 55, 250: 95, 500: 140, 1000: 210 },
-      finishMultipliers: { simples: 1, bopp: 1.2, verniz: 1.35, dtf: 1.5 }
-    },
-    copo: {
-      basePrices: { 10: 80, 25: 160, 50: 280, 100: 490 },
-      finishMultipliers: { simples: 1, bopp: 1.1, verniz: 1.2, dtf: 1.35 }
-    },
-    adesivo: {
-      basePrices: { 50: 35, 100: 55, 250: 95, 500: 150 },
-      finishMultipliers: { simples: 1, bopp: 1.2, verniz: 1.3, dtf: 1.6 }
-    }
-  };
-
-  function calculate() {
-    if (!productSelect || !finishSelect || !qtySelect || !totalDisplay) return;
-
-    const prod = productSelect.value || 'cartao';
-    const finish = finishSelect.value || 'simples';
-    const qty = parseInt(qtySelect.value, 10) || 100;
-
-    const productData = pricingTable[prod] || pricingTable.cartao;
-    const base = productData.basePrices[qty] || (qty * 0.5);
-    const mult = productData.finishMultipliers[finish] || 1;
-
-    const total = base * mult;
-    const unit = total / qty;
-
-    totalDisplay.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-    if (unitDisplay) {
-      unitDisplay.textContent = `(R$ ${unit.toFixed(2).replace('.', ',')} / un)`;
-    }
-
-    if (whatsappCta) {
-      const prodText = productSelect.options[productSelect.selectedIndex]?.text || prod;
-      const finishText = finishSelect.options[finishSelect.selectedIndex]?.text || finish;
-      const msg = encodeURIComponent(
-        `Olá VM Gráfica! Gostaria de encomendar pelo simulador:\n- Produto: ${prodText}\n- Acabamento: ${finishText}\n- Quantidade: ${qty} un\n- Valor Estimado: R$ ${total.toFixed(2).replace('.', ',')}`
-      );
-      whatsappCta.href = `https://wa.me/5562993725371?text=${msg}`;
-    }
+  function scheduleMorphUpdate() {
+    if (morphFrame !== null) return;
+    morphFrame = window.requestAnimationFrame(updateMorph);
   }
 
-  [productSelect, finishSelect, qtySelect].forEach(el => {
-    if (el) el.addEventListener('change', calculate);
-  });
+  function invalidateMorphMetrics() {
+    morphMetrics = null;
+    scheduleMorphUpdate();
+  }
 
-  calculate();
+  window.addEventListener('scroll', scheduleMorphUpdate, { passive: true });
+  window.addEventListener('resize', invalidateMorphMetrics, { passive: true });
+  window.addEventListener('orientationchange', invalidateMorphMetrics, { passive: true });
+  window.addEventListener('pageshow', invalidateMorphMetrics);
+  window.visualViewport?.addEventListener('resize', invalidateMorphMetrics, { passive: true });
 }
 
-/* ==========================================================================
-   3. PÁGINA DE PRODUTO DEDICADA: CANECA PERSONALIZADA (produto-caneca.html)
-   ========================================================================== */
-function initProductCanecaPage() {
+/**
+ * Galeria Interativa & Configurador da Caneca 325ml
+ */
+function setupProductCaneca() {
   const mainImg = document.getElementById('main-product-img');
-  const thumbButtons = document.querySelectorAll('.thumb-btn');
-  const modelChips = document.querySelectorAll('.model-chip');
+  const thumbCards = document.querySelectorAll('.thumb-card');
+  const modelOptions = document.querySelectorAll('.model-option');
   const qtyInput = document.getElementById('qty-input');
   const qtyMinus = document.getElementById('qty-minus');
   const qtyPlus = document.getElementById('qty-plus');
-  const tierQuickBtns = document.querySelectorAll('.tier-btn');
-  const tierCols = document.querySelectorAll('.tier-col');
+  const quickQtyBtns = document.querySelectorAll('.quick-qty-btn');
+  const tierCards = document.querySelectorAll('.tier-card');
   const summaryUnitPrice = document.getElementById('summary-unit-price');
   const summaryTotalPrice = document.getElementById('summary-total-price');
   const summaryItemsCount = document.getElementById('summary-items-count');
@@ -138,157 +187,147 @@ function initProductCanecaPage() {
 
   if (!mainImg || !qtyInput) return;
 
-  // Estado do Produto
-  let currentModel = 'classica';
-  let currentModelName = 'Branca Clássica';
-  let currentExtraPrice = 0;
-  let currentQty = parseInt(qtyInput.value, 10) || 1;
-
-  // 1. Galeria de Fotos Interativa (5 Imagens)
-  thumbButtons.forEach(btn => {
+  // 1. Miniaturas da Galeria
+  thumbCards.forEach((btn) => {
     btn.addEventListener('click', () => {
+      thumbCards.forEach(t => t.classList.remove('is-active'));
+      btn.classList.add('is-active');
       const newSrc = btn.getAttribute('data-img');
       const newAlt = btn.getAttribute('data-alt');
-
-      // Feedback de transição suave
       mainImg.style.opacity = '0.3';
       setTimeout(() => {
         mainImg.src = newSrc;
-        if (newAlt) mainImg.alt = newAlt;
+        mainImg.alt = newAlt;
         mainImg.style.opacity = '1';
       }, 120);
-
-      // Atualizar abas ativas
-      thumbButtons.forEach(b => {
-        b.classList.remove('is-active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      btn.classList.add('is-active');
-      btn.setAttribute('aria-selected', 'true');
     });
   });
 
-  // 2. Seletor de Modelo / Acabamento
-  modelChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      modelChips.forEach(c => {
-        c.classList.remove('is-selected');
-        c.setAttribute('aria-checked', 'false');
-      });
-      chip.classList.add('is-selected');
-      chip.setAttribute('aria-checked', 'true');
+  // 2. Seleção de Modelos
+  let selectedModel = 'classica';
+  let selectedModelName = 'Branca Clássica';
+  let modelExtraCost = 0;
 
-      currentModel = chip.getAttribute('data-model');
-      currentModelName = chip.querySelector('.chip-title')?.textContent?.trim() || 'Branca Clássica';
-      currentExtraPrice = parseFloat(chip.getAttribute('data-extra')) || 0;
+  modelOptions.forEach((opt) => {
+    opt.addEventListener('click', () => {
+      modelOptions.forEach(o => o.classList.remove('is-selected'));
+      opt.classList.add('is-selected');
+      selectedModel = opt.getAttribute('data-model');
+      selectedModelName = opt.querySelector('.opt-name')?.textContent || 'Branca Clássica';
+      modelExtraCost = parseFloat(opt.getAttribute('data-extra') || '0');
 
-      // Trocar thumbnail automaticamente para a foto correspondente
-      if (currentModel === 'classica') thumbButtons[0]?.click();
-      if (currentModel === 'magica') thumbButtons[1]?.click();
-      if (currentModel === 'colorida') thumbButtons[2]?.click();
-      if (currentModel === 'presente') thumbButtons[4]?.click();
+      // Trocar imagem principal de acordo com o modelo selecionado
+      if (selectedModel === 'classica') switchGallery(0);
+      else if (selectedModel === 'magica') switchGallery(1);
+      else if (selectedModel === 'colorida') switchGallery(2);
+      else if (selectedModel === 'presente') switchGallery(4);
 
-      updateProductCalculations();
+      calculatePrice();
     });
   });
 
-  // 3. Tabela de Preços Base por Quantidade
-  function getBaseUnitPrice(qty) {
+  function switchGallery(index) {
+    if (thumbCards[index]) {
+      thumbCards[index].click();
+    }
+  }
+
+  // 3. Quantidade e Faixas de Preço
+  function getBasePricePerUnit(qty) {
     if (qty >= 50) return 19.90;
     if (qty >= 15) return 24.90;
     if (qty >= 5) return 29.90;
     return 35.00;
   }
 
-  // 4. Atualização de Cálculos e Mensagens
-  function updateProductCalculations() {
-    currentQty = Math.max(1, Math.min(1000, parseInt(qtyInput.value, 10) || 1));
-    qtyInput.value = currentQty;
+  function calculatePrice() {
+    let qty = parseInt(qtyInput.value, 10);
+    if (isNaN(qty) || qty < 1) qty = 1;
 
-    const baseUnit = getBaseUnitPrice(currentQty);
-    const finalUnit = baseUnit + currentExtraPrice;
-    const totalPrice = finalUnit * currentQty;
+    const baseUnit = getBasePricePerUnit(qty);
+    const finalUnit = baseUnit + modelExtraCost;
+    const finalTotal = finalUnit * qty;
 
-    // Atualizar UI de Preço
-    if (summaryUnitPrice) {
-      summaryUnitPrice.textContent = `R$ ${finalUnit.toFixed(2).replace('.', ',')} / un`;
-    }
-    if (summaryTotalPrice) {
-      summaryTotalPrice.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
-    }
-    if (stickyTotalPrice) {
-      stickyTotalPrice.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
-    }
-    if (summaryItemsCount) {
-      summaryItemsCount.textContent = `(${currentQty} ${currentQty === 1 ? 'unidade selecionada' : 'unidades selecionadas'})`;
-    }
+    const formattedUnit = finalUnit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const formattedTotal = finalTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-    // Atualizar Faixa Ativa na Tabela
-    tierCols.forEach(col => {
-      const min = parseInt(col.getAttribute('data-min'), 10);
-      const max = parseInt(col.getAttribute('data-max'), 10);
-      if (currentQty >= min && currentQty <= max) {
-        col.classList.add('is-current');
+    if (summaryUnitPrice) summaryUnitPrice.textContent = `${formattedUnit} / un`;
+    if (summaryTotalPrice) summaryTotalPrice.textContent = formattedTotal;
+    if (summaryItemsCount) summaryItemsCount.textContent = `(${qty} ${qty === 1 ? 'unidade selecionada' : 'unidades selecionadas'})`;
+    if (stickyTotalPrice) stickyTotalPrice.textContent = formattedTotal;
+
+    // Destacar faixa ativa
+    tierCards.forEach((card) => {
+      const min = parseInt(card.getAttribute('data-min'), 10);
+      const max = parseInt(card.getAttribute('data-max'), 10);
+      if (qty >= min && qty <= max) {
+        card.classList.add('is-current');
       } else {
-        col.classList.remove('is-current');
+        card.classList.remove('is-current');
       }
     });
 
-    // Atualizar Botões Rápidos
-    tierQuickBtns.forEach(btn => {
+    // Atualizar botões de atalho
+    quickQtyBtns.forEach((btn) => {
       const btnQty = parseInt(btn.getAttribute('data-qty'), 10);
-      if (btnQty === currentQty) {
-        btn.classList.add('is-active');
-      } else {
-        btn.classList.remove('is-active');
-      }
+      if (btnQty === qty) btn.classList.add('is-active');
+      else btn.classList.remove('is-active');
     });
 
-    // Montar link do WhatsApp
-    const msg = encodeURIComponent(
-      `Olá VM Gráfica! Gostaria de encomendar Canecas Personalizadas:\n` +
-      `• Modelo: ${currentModelName}\n` +
-      `• Quantidade: ${currentQty} un\n` +
-      `• Preço Unitário: R$ ${finalUnit.toFixed(2).replace('.', ',')}\n` +
-      `• Total Estimado: R$ ${totalPrice.toFixed(2).replace('.', ',')}\n\n` +
-      `Gostaria de enviar minha arte/foto para aprovação!`
-    );
-    const waUrl = `https://wa.me/5562993725371?text=${msg}`;
+    // Atualizar Links do WhatsApp
+    const msg = `Olá VM Gráfica! Gostaria de fazer o pedido de:
 
-    if (btnBuyWhatsapp) btnBuyWhatsapp.href = waUrl;
-    if (btnStickyWhatsapp) btnStickyWhatsapp.href = waUrl;
+` +
+      `📦 *Produto:* Caneca de Porcelana 325ml
+` +
+      `✨ *Modelo:* ${selectedModelName}
+` +
+      `🔢 *Quantidade:* ${qty} un
+` +
+      `💵 *Valor Unitário:* ${formattedUnit}
+` +
+      `💰 *Total Estimado:* ${formattedTotal}
+
+` +
+      `Podem me orientar sobre o envio da arte e prazo de produção?`;
+
+    const zapUrl = `https://wa.me/5562993725371?text=${encodeURIComponent(msg)}`;
+    if (btnBuyWhatsapp) btnBuyWhatsapp.href = zapUrl;
+    if (btnStickyWhatsapp) btnStickyWhatsapp.href = zapUrl;
   }
 
-  // Event Listeners de Quantidade
+  // Eventos de Quantidade
   if (qtyMinus) {
     qtyMinus.addEventListener('click', () => {
-      if (currentQty > 1) {
-        qtyInput.value = currentQty - 1;
-        updateProductCalculations();
+      let q = parseInt(qtyInput.value, 10) || 1;
+      if (q > 1) {
+        qtyInput.value = q - 1;
+        calculatePrice();
       }
     });
   }
 
   if (qtyPlus) {
     qtyPlus.addEventListener('click', () => {
-      qtyInput.value = currentQty + 1;
-      updateProductCalculations();
+      let q = parseInt(qtyInput.value, 10) || 1;
+      qtyInput.value = q + 1;
+      calculatePrice();
     });
   }
 
-  qtyInput.addEventListener('input', updateProductCalculations);
-  qtyInput.addEventListener('change', updateProductCalculations);
+  if (qtyInput) {
+    qtyInput.addEventListener('input', calculatePrice);
+    qtyInput.addEventListener('change', calculatePrice);
+  }
 
-  tierQuickBtns.forEach(btn => {
+  quickQtyBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       const q = parseInt(btn.getAttribute('data-qty'), 10);
-      if (q) {
-        qtyInput.value = q;
-        updateProductCalculations();
-      }
+      qtyInput.value = q;
+      calculatePrice();
     });
   });
 
-  // Inicializar cálculo na carga
-  updateProductCalculations();
+  // Cálculo inicial
+  calculatePrice();
 }
