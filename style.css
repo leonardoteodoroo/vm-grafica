@@ -2342,8 +2342,10 @@ button, input, select {
 .breadcrumb-bar {
   background: var(--bg-canvas-subtle);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 12px 4vw;
+  padding: 10px 4vw;
   font-size: 0.82rem;
+  width: 100%;
+  overflow: hidden;
 }
 
 .breadcrumb-inner {
@@ -2351,26 +2353,40 @@ button, input, select {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   color: var(--text-muted);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .breadcrumb-inner a {
   color: var(--text-secondary);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: var(--transition-fast);
 }
 
 .breadcrumb-inner a:hover {
   color: var(--brand-cyan);
+  text-decoration: underline;
 }
 
 .bc-sep {
   opacity: 0.4;
+  flex-shrink: 0;
 }
 
 .bc-current {
   color: var(--brand-navy);
   font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 /* ==========================================================================
@@ -3262,9 +3278,42 @@ button, input, select {
    ========================================================================== */
 
 @media (max-width: 900px) {
+  .product-stage {
+    padding: 20px 4vw 48px;
+  }
+
   .product-stage-inner {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .product-details-block {
+    display: contents;
+  }
+
+  /* 1º: Título do Produto, Selo, Estrelas e Resumo (Acima da Imagem e Abaixo do Breadcrumb) */
+  .product-intro {
+    order: 1;
+    margin-bottom: 2px;
+  }
+
+  .product-main-heading {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  /* 2º: Galeria de Fotos e Miniaturas */
+  .product-gallery-block {
+    order: 2;
+    margin: 0 auto 8px auto;
+    max-width: 100%;
+  }
+
+  /* 3º: Painel do Configurador e Ações de Pedido */
+  .configurator-panel {
+    order: 3;
+    width: 100%;
   }
 
   .nav-links {
